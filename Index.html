@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tima Nlemvo | Senior IT Engineer</title>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap)" rel="stylesheet">
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <style>
+        :root {
+            --blueprint-bg: #f0f9ff;
+            --grid-navy: rgba(30, 58, 138, 0.1);
+            --saber-blue: #00A3FF;
+            --amber-alert: #FFB800;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+        body { font-family: 'Raleway', sans-serif; background-color: var(--blueprint-bg); color: #1e293b; margin: 0; overflow-x: hidden; }
+        h1, h2, h3, .tech-data { font-family: 'Space Mono', monospace; text-transform: uppercase; }
+        .blueprint-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: linear-gradient(var(--grid-navy) 1px, transparent 1px), linear-gradient(90deg, var(--grid-navy) 1px, transparent 1px), linear-gradient(rgba(30, 58, 138, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138, 0.05) 1px, transparent 1px); background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tactical-pop { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tactical-pop:hover { background: var(--saber-blue) !important; border: 2px solid var(--saber-blue) !important; box-shadow: 0 0 50px rgba(0, 163, 255, 0.4), 0 20px 60px rgba(0, 0, 0, 0.1) !important; transform: scale(1.05) translateY(-2px); z-index: 10; color: white !important; }
+        .tactical-pop:hover a, .tactical-pop:hover span, .tactical-pop:hover .tech-data { color: white !important; opacity: 1 !important; }
+        .frequency-link { background: rgba(0, 163, 255, 0.1); border: 2px solid var(--saber-blue); color: var(--saber-blue); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; cursor: pointer; }
+        .frequency-link:hover { background: var(--saber-blue); color: white; box-shadow: 0 0 25px var(--saber-blue); transform: scale(1.02); }
+        .locked-content { filter: blur(12px); pointer-events: none; user-select: none; opacity: 0.5; }
+        .lock-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; text-align: center; width: 100%; }
+        .tactical-modal-content { background: rgba(255, 255, 255, 0.95) !important; border: 2px solid var(--saber-blue) !important; box-shadow: 0 0 50px rgba(0, 163, 255, 0.3), 0 20px 60px rgba(0, 0, 0, 0.1) !important; }
+        .btn-primary { background: var(--saber-blue); color: white; font-family: 'Space Mono', monospace; padding: 12px 28px; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; }
+        .btn-secondary { border: 2px solid var(--saber-blue); color: var(--saber-blue); font-family: 'Space Mono', monospace; padding: 10px 26px; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; }
+        .flash-notif { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: rgba(0, 163, 255, 0.9); color: white; padding: 12px 24px; border-radius: 12px; z-index: 1000; box-shadow: 0 0 30px rgba(0, 163, 255, 0.5); transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); }
+        .flash-active { top: 24px; }
+        .status-badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: var(--amber-alert); color: #000; font-weight: bold; }
+        .category-tag { font-size: 9px; padding: 2px 6px; border: 1px solid var(--saber-blue); color: var(--saber-blue); font-family: 'Space Mono', monospace; border-radius: 4px; }
+        .border-accent { border-left: 4px solid var(--saber-blue); }
+        .view-transition { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .hidden-view { display: none; opacity: 0; transform: translateY(20px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <div class="blueprint-canvas"></div>
+    <div id="flashNotif" class="flash-notif">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Transmission Copied to Clipboard</span>
+    </div>
+    <div id="aiModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center hidden p-6 z-[100]">
+        <div class="glass-panel tactical-modal-content w-full max-w-2xl max-h-[90vh] overflow-y-auto p-10 relative">
+            <button onclick="toggleAIModal(false)" class="absolute top-6 right-6 text-3xl opacity-40 hover:opacity-100 hover:text-[--saber-blue] transition-colors">Ã</button>
+            <div id="aiModalHeader" class="mb-8 border-b-2 border-[--saber-blue]/10 pb-6">
+                <h2 id="aiModalTitle" class="tech-data text-3xl mb-2 text-[--saber-blue] font-bold tracking-tight">â¨ Admiral's Briefing</h2>
+                <p id="aiModalDesc" class="text-sm font-semibold opacity-60 tracking-wider uppercase">Secure Tactical Summary</p>
+            </div>
+            <div id="aiResultArea">
+                <div id="aiLoading" class="tech-data text-center text-xs py-10 text-[--saber-blue] animate-pulse">SYNTHESIZING ARCHITECTURE DATA...</div>
+                <div id="aiContent" class="prose prose-blue max-w-none text-slate-800 text-sm leading-relaxed whitespace-pre-wrap font-medium"></div>
+            </div>
+        </div>
+    </div>
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto sticky top-0 z-50">
+        <div class="tactical-pop tech-data font-bold text-lg tracking-tighter cursor-pointer px-4 py-2 rounded-xl border border-transparent" onclick="showView('home')">TIMA.DEV // BRIDGE</div>
+        <div class="space-x-1 hidden md:flex tech-data text-xs items-center">
+            <a href="javascript:void(0)" onclick="showView('home', 'alignment')" class="tactical-pop px-4 py-2 rounded-lg border border-transparent">Alignment</a>
+            <a href="javascript:void(0)" onclick="showView('home', 'fleet')" class="tactical-pop px-4 py-2 rounded-lg border border-transparent">The Fleet</a>
+            <a href="javascript:void(0)" onclick="showView('archive')" class="tactical-pop px-4 py-2 rounded-lg border border-transparent">The Holocron</a>
+            <a href="javascript:void(0)" onclick="showView('architect')" class="tactical-pop px-4 py-2 rounded-lg border border-transparent">About</a>
+            <a href="javascript:void(0)" onclick="showView('home', 'tour')" class="tactical-pop px-4 py-2 rounded-lg border border-transparent">Guided Tour</a>
+        </div>
+    </nav>
+    <div id="home-view" class="view-transition">
+        <header class="max-w-7xl mx-auto px-6 pt-20 pb-32">
+            <div class="glass-panel p-10 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg width="200" height="200" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="#1e3a5f" stroke-width="0.5" fill="none" /><rect x="20" y="20" width="60" height="60" stroke="#1e3a5f" stroke-width="0.5" fill="none" /></svg>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Tima Nlemvo</h1>
+                <p class="tech-data text-[--saber-blue] text-lg mb-8">Senior IT Engineer | Infrastructure Architect</p>
+                <div class="max-w-2xl border-accent pl-6 mb-12">
+                    <p class="text-lg md:text-xl leading-relaxed opacity-80">I donât just work in technology; I live it. With over 7 years of experience managing complex IT environments for industry leaders like <strong>Team Liquid, Stagwell, and CAA</strong>, Iâve built a career on the principle of Operational Excellence.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="showView('archive')" class="btn-primary tactical-pop text-center">ENTER THE HOLOCRON: VIEW THE FLEET</button>
+                    <button onclick="showView('architect')" class="btn-secondary tactical-pop text-center">MEET THE ARCHITECT</button>
+                </div>
+            </div>
+        </header>
+        <section id="alignment" class="max-w-7xl mx-auto px-6 py-20">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
+            <div class="glass-panel overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-white/30 tech-data text-xs uppercase"><tr><th class="p-6 w-1/4">Category</th><th class="p-6 w-1/3">Enterprise Expertise</th><th class="p-6 w-5/12">The Alliance Implementation (Lab)</th></tr></thead>
+                    <tbody class="divide-y divide-white/20">
+                        <tr><td class="p-6 font-bold tech-data text-xs text-sm">Identity & Access Management (IAM)</td><td class="p-6 opacity-80 text-sm">Active Directory, Google Workspace, User Access Governance.</td><td class="p-6 text-[--saber-blue] text-sm font-semibold">Authentik: Centralized OIDC/SAML, MFA Enforcement, and SSO bridging for all cluster services.</td></tr>
+                        <tr><td class="p-6 font-bold tech-data text-xs text-sm">Infrastructure Reliability</td><td class="p-6 opacity-80 text-sm">Backup solutions, Patching schedules, Enterprise Imaging.</td><td class="p-6 text-[--saber-blue] text-sm font-semibold">Proxmox VE & ZFS: Atomic snapshots, self-healing file systems, and TIG Stack for real-time telemetry.</td></tr>
+                        <tr><td class="p-6 font-bold tech-data text-xs text-sm">Endpoint Management</td><td class="p-6 opacity-80 text-sm">JAMF Pro, Microsoft Intune, SCCM, Device Encryption.</td><td class="p-6 text-[--saber-blue] text-sm font-semibold">Virtualized Endpoints: Managed via Proxmox with hardware-level encryption (SED) and automated provisioning.</td></tr>
+                        <tr><td class="p-6 font-bold tech-data text-xs text-sm">Networking & Security</td><td class="p-6 opacity-80 text-sm">Structured Cabling, Rack Management, Corporate Firewalls.</td><td class="p-6 text-[--saber-blue] text-sm font-semibold">OPNsense & L2 Switching: 802.1Q VLAN segmentation, 2.5GbE backbone, and UniFi wireless mesh.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="fleet" class="max-w-7xl mx-auto px-6 py-20">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">02.</span> Operational Index: Active Fleet Status</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 relative"><div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-A: Falcon</h3><span class="status-badge">ACTIVE</span></div><p class="tech-data text-[10px] opacity-60 mb-2">Role: Compute & AI</p><p class="text-sm mb-6 h-12">Intel Core Ultra 9, 64GB DDR5. High-density AI inference and multi-step API automation.</p></div>
+                <div class="glass-panel p-8 relative"><div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-B: Corvette</h3><span class="status-badge">SHIELDED</span></div><p class="tech-data text-[10px] opacity-60 mb-2">Role: Data & Security</p><p class="text-sm mb-6 h-12">AMD Ryzen 7 PRO. Hosts Wazuh SIEM, Authentik Identity Core, and encrypted credential management.</p></div>
+                <div class="glass-panel p-8 relative"><div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-C: Go-zanti</h3><span class="status-badge" style="background: #0ea5e9; color: white;">GATEWAY</span></div><p class="tech-data text-[10px] opacity-60 mb-2">Role: Networking</p><p class="text-sm mb-6 h-12">OPNsense perimeter firewall, VLAN gateway, and SSL Termination traffic controller.</p></div>
+            </div>
+        </section>
+        <section id="holocron" class="max-w-7xl mx-auto px-6 py-20 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12"><div><h2 class="text-2xl font-bold mb-4 flex items-center gap-4"><span class="text-[--saber-blue]">03.</span> The Holocron: Technical Archive</h2><p class="opacity-60 max-w-xl">Deep-dives into the implementation of the fleet.</p></div><div class="mt-6 md:mt-0"><span class="text-[--amber-alert] tech-data text-xs font-bold uppercase tracking-widest">System Lock Active</span></div></div>
+            <div class="lock-overlay"><div class="glass-panel inline-block px-12 py-8 border-2 border-[--amber-alert]"><div class="tech-data text-[10px] text-[--amber-alert] mb-4 tracking-[0.2em] font-bold">ENCRYPTION DECRYPTION IN PROGRESS</div><div id="countdown" class="tech-data text-4xl md:text-5xl font-bold text-slate-800 tracking-tighter">00:00:00:00</div><div class="tech-data text-[9px] mt-4 opacity-60 uppercase">Admiral Clearance Required // Go-Live Jan 05 PST</div></div></div>
+            <div id="holocronSlider" class="flex gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 px-1 locked-content"></div>
+        </section>
+        <section id="tour" class="max-w-7xl mx-auto px-6 py-20 mb-32">
+            <div class="glass-panel p-8 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden"><div class="relative z-10"><h2 class="tech-data text-xl mb-6">Note to Recruiters // The Guided Tour</h2><p class="text-lg opacity-80 mb-8 leading-relaxed">Looking for an engineer who treats every project with the rigor of a production data center? <strong>I am happy to hop on a screen-share for a "Guided Tour" of the Alliance.</strong></p><div class="space-y-6"><div class="tech-data text-xs py-3 px-6 rounded-lg border border-[--amber-alert] bg-[--amber-alert]/10 flex items-center gap-3"><span class="animate-pulse">â ï¸</span> TACTICAL ALIGNMENT STRATEGIST: OFFLINE FOR MAINTENANCE</div><div class="flex flex-col sm:flex-row gap-4 mt-6"><a href="[https://www.linkedin.com/in/timanlemvo/](https://www.linkedin.com/in/timanlemvo/)" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1">LINKEDIN // PILOT â</a><button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1 font-bold">EMAIL // ADMIRAL â</button></div></div></div></div>
+        </section>
+    </div>
+    <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-6 py-20">
+        <div class="mb-12"><button onclick="showView('home')" class="tech-data text-xs text-[--saber-blue] mb-4 hover:underline">â BACK TO BRIDGE</button><h1 class="text-4xl font-bold mb-4">The Holocron Archive</h1></div>
+        <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 locked-content"></div>
+        <div class="text-center py-20 tech-data text-[--amber-alert] uppercase">Archive Locked Until Jan 05, 2026</div>
+    </div>
+    <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-6 py-20">
+        <div class="mb-12"><button onclick="showView('home')" class="tech-data text-xs text-[--saber-blue] mb-4 hover:underline">â BACK TO BRIDGE</button></div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 space-y-12"><div class="glass-panel p-10 border-accent"><h1 class="text-3xl font-bold mb-6">The Architect Behind the Fleet</h1><div class="space-y-6 text-lg leading-relaxed opacity-90"><p>I am an accomplished, results-oriented IT professional with over seven years of experience managing complex environments for leaders like <strong>Team Liquid, Stagwell, and CAA</strong>.</p><p>My career is built on the principle of Operational Excellence and a "Measure Twice, Cut Once" philosophy. I treat infrastructure as a version-controlled product, transitioning workloads from static hardware to resilient High Availability clusters.</p><p>Today, I am leveraging that enterprise foundation to architect the future of private cloud environments, specializing in virtualization, AI-driven orchestration (AIOps), and Zero-Trust networking.</p></div></div></div>
+            <div class="space-y-8"><div class="glass-panel p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)]"><h3 class="tech-data text-[10px] mb-6 text-[--saber-blue] font-bold">Command Frequency</h3><div class="space-y-4"><a href="[https://www.linkedin.com/in/timanlemvo/](https://www.linkedin.com/in/timanlemvo/)" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center">LINKEDIN // PILOT â</a><button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold">EMAIL // ADMIRAL â</button></div></div></div>
+        </div>
+    </div>
+    <footer class="p-10 text-center opacity-40 tech-data text-[10px]">DESIGNED AS AN EXTENSION OF THE ALLIANCE HOLOCRON // Â© 2025 TIMA NLEMVO</footer>
+    <script>
+        const apiKey = "";
+        const blogPosts = [
+            { id: "POST_08.1", category: "SECURITY", title: "The Identity Core: Authentik & Centralized IAM", tag: "SECURITY // IAM", excerpt: "Replicating Active Directory and Google Workspace environments for SSO and MFA." },
+            { id: "POST_12.0", category: "AUTOMATION", title: "Standardizing the Fleet: Packer & Cloud-Init", tag: "AUTOMATION // IaC", excerpt: "Moving past manual installs into automated Infrastructure as Code deployment." },
+            { id: "POST_08.0", category: "SECURITY", title: "The Watchtower: Wazuh SIEM & Compliance", tag: "SECURITY // SIEM", excerpt: "Enterprise-grade security monitoring, log analysis, and threat detection." }
+        ];
+        function startCountdown() {
+            const targetDate = new Date("2026-01-05T00:00:00-08:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                const countdownEl = document.getElementById("countdown");
+                if (!countdownEl) return;
+                if (distance < 0) { countdownEl.innerHTML = "00:00:00:00"; return; }
+                const d = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                countdownEl.innerHTML = `${d}:${h}:${m}:${s}`;
+            }, 1000);
+        }
+        function copyEmail() {
+            const email = "TimaNlemvo@gmail.com";
+            const textArea = document.createElement("textarea");
+            textArea.value = email; document.body.appendChild(textArea); textArea.select();
+            try { document.execCommand('copy'); const flash = document.getElementById('flashNotif'); flash.classList.add('flash-active'); setTimeout(() => flash.classList.remove('flash-active'), 3000); } catch (err) { console.error('Copy failed'); }
+            document.body.removeChild(textArea);
+        }
+        async function callGemini(prompt, systemPrompt = "") {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
+            try { const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); const data = await response.json(); return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error synthesizing data."; } catch (err) { return "Intelligence service offline."; }
+        }
+        async function summarizePost(index) {
+            const post = blogPosts[index]; toggleAIModal(true);
+            const contentArea = document.getElementById('aiContent'); const loadingArea = document.getElementById('aiLoading');
+            contentArea.innerText = ""; loadingArea.classList.remove('hidden');
+            const result = await callGemini(`Summarize: ${post.title}, Excerpt: ${post.excerpt}`, "Provide high-level technical intelligence for an admiral's briefing.");
+            loadingArea.classList.add('hidden'); contentArea.innerText = result;
+        }
+        function toggleAIModal(show) { const modal = document.getElementById('aiModal'); if (show) modal.classList.remove('hidden'); else modal.classList.add('hidden'); }
+        function renderPosts() {
+            const html = blogPosts.map((post, idx) => `<article class="glass-panel blog-card p-8 flex flex-col min-w-[100%] md:min-w-[48%] lg:min-w-[31.5%] snap-start"><div class="flex justify-between mb-4"><span class="category-tag">${post.tag}</span><span class="tech-data text-[9px] opacity-40">${post.id}</span></div><h3 class="font-bold mb-4 text-slate-800">${post.title}</h3><p class="text-sm opacity-60 mb-6 flex-grow">${post.excerpt}</p><div class="flex justify-between items-center opacity-20 pointer-events-none"><span class="tech-data text-[10px]">READ_TRANSMISSION â</span><button onclick="summarizePost(${idx})" class="text-[10px] font-bold">â¨ SUMMARY</button></div></article>`).join('');
+            const slider = document.getElementById('holocronSlider'); const grid = document.getElementById('archiveGrid');
+            if (slider) slider.innerHTML = html; if (grid) grid.innerHTML = html;
+        }
+        function showView(viewId, sectionId = null) {
+            const views = ['home-view', 'archive-view', 'architect-view'];
+            views.forEach(v => { const el = document.getElementById(v); if (el) { el.classList.add('hidden-view'); setTimeout(() => el.style.display = 'none', 400); } });
+            setTimeout(() => { const active = document.getElementById(`${viewId}-view`); if (active) { active.style.display = 'block'; setTimeout(() => active.classList.remove('hidden-view'), 50); if (sectionId) { const target = document.getElementById(sectionId); if (target) target.scrollIntoView({ behavior: 'smooth' }); } } }, 450);
+        }
+        window.onload = () => { renderPosts(); startCountdown(); };
+    </script>
+</body>
+</html>
