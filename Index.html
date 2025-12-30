@@ -59,7 +59,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Tactical Pop Hover Effect (Isolated to Nav, Buttons, Logo) */
+        /* Tactical Pop Hover Effect (Isolated to Nav, Specific Buttons, Logo) */
         .tactical-pop {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -67,13 +67,12 @@
         .tactical-pop:hover {
             background: var(--saber-blue) !important;
             border: 2px solid var(--saber-blue) !important;
-            box-shadow: 0 0 40px rgba(0, 163, 255, 0.4) !important;
+            box-shadow: 0 0 50px rgba(0, 163, 255, 0.4) !important;
             transform: scale(1.05) translateY(-2px);
             z-index: 10;
             color: white !important;
         }
 
-        /* Inversion for tactical pop children */
         .tactical-pop:hover a,
         .tactical-pop:hover span,
         .tactical-pop:hover .tech-data {
@@ -99,7 +98,7 @@
             transform: scale(1.02);
         }
 
-        /* Lockdown / Encryption State */
+        /* Lockdown Styles */
         .locked-content {
             filter: blur(14px);
             pointer-events: none;
@@ -112,16 +111,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 30;
+            z-index: 20;
             text-align: center;
             width: 100%;
-        }
-
-        /* Tactical Modal UI */
-        .tactical-modal-content {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border: 2px solid var(--saber-blue) !important;
-            box-shadow: 0 0 50px rgba(0, 163, 255, 0.3), 0 20px 60px rgba(0, 0, 0, 0.1) !important;
         }
 
         .btn-primary {
@@ -144,7 +136,6 @@
             cursor: pointer;
         }
 
-        /* Flash Notification */
         .flash-notif {
             position: fixed;
             top: -100px;
@@ -165,6 +156,7 @@
             text-transform: uppercase;
             border: 1px solid rgba(255,255,255,0.3);
         }
+
         .flash-active { top: 24px; }
 
         .status-badge {
@@ -199,30 +191,13 @@
 <body>
     <div class="blueprint-canvas"></div>
 
-    <!-- Feedback UI -->
+    <!-- Flash UI -->
     <div id="flashNotif" class="flash-notif">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         <span>Transmission Copied to Clipboard</span>
     </div>
 
-    <!-- AI Briefing Modal -->
-    <div id="aiModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center hidden p-6 z-[100]">
-        <div class="glass-panel tactical-modal-content w-full max-w-2xl max-h-[90vh] overflow-y-auto p-10 relative">
-            <button onclick="toggleAIModal(false)" class="absolute top-6 right-6 text-3xl opacity-40 hover:opacity-100 hover:text-[--saber-blue] transition-colors">×</button>
-            <div id="aiModalHeader" class="mb-8 border-b-2 border-[--saber-blue]/10 pb-6">
-                <h2 id="aiModalTitle" class="tech-data text-3xl mb-2 text-[--saber-blue] font-bold tracking-tight">✨ Admiral's Briefing</h2>
-                <p id="aiModalDesc" class="text-sm font-semibold opacity-60 tracking-wider uppercase">Secure Tactical Summary</p>
-            </div>
-            <div id="aiResultArea">
-                <div id="aiLoading" class="tech-data text-center text-xs py-10 text-[--saber-blue] animate-pulse">
-                    SYNTHESIZING ARCHITECTURE DATA...
-                </div>
-                <div id="aiContent" class="prose prose-blue max-w-none text-slate-800 text-sm leading-relaxed whitespace-pre-wrap font-medium"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Global Navigation -->
+    <!-- Navigation -->
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto sticky top-0 z-50">
         <div class="tactical-pop tech-data font-bold text-lg tracking-tighter cursor-pointer px-4 py-2 rounded-xl border border-transparent" onclick="showView('home')">
             TIMA.DEV // BRIDGE
@@ -236,10 +211,9 @@
         </div>
     </nav>
 
-    <!-- BRIDGE / MAIN CONTENT -->
+    <!-- BRIDGE / HOME VIEW -->
     <div id="home-view" class="view-transition">
         <header class="max-w-7xl mx-auto px-6 pt-20 pb-32">
-            <!-- Hero Section (Stable Glass Foundation) -->
             <div class="glass-panel p-10 md:p-16 relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-10">
                     <svg width="200" height="200" viewBox="0 0 100 100">
@@ -255,14 +229,13 @@
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <!-- High-Visibility Tactical Buttons -->
                     <button onclick="showView('archive')" class="btn-primary tactical-pop text-center">ENTER THE HOLOCRON: VIEW THE FLEET</button>
                     <button onclick="showView('architect')" class="btn-secondary tactical-pop text-center">MEET THE ARCHITECT</button>
                 </div>
             </div>
         </header>
 
-        <!-- 01. Professional Alignment Matrix (Stable Data) -->
+        <!-- 01. Professional Alignment Matrix -->
         <section id="alignment" class="max-w-7xl mx-auto px-6 py-20">
             <h2 class="text-2xl font-bold mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
             <div class="glass-panel overflow-hidden">
@@ -300,29 +273,29 @@
             </div>
         </section>
 
-        <!-- 02. Active Fleet Status -->
+        <!-- 02. Fleet Status -->
         <section id="fleet" class="max-w-7xl mx-auto px-6 py-20">
             <h2 class="text-2xl font-bold mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">02.</span> Operational Index: Active Fleet Status</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="glass-panel p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-A: Falcon</h3><span class="status-badge">ACTIVE</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Compute & AI</p>
-                    <p class="text-sm mb-6 h-12">Intel Core Ultra 9, 64GB DDR5. High-density AI inference and complex automation.</p>
+                    <p class="text-sm mb-6 h-12 leading-relaxed">Intel Core Ultra 9, 64GB DDR5. High-density AI inference and complex automation.</p>
                 </div>
                 <div class="glass-panel p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-B: Corvette</h3><span class="status-badge">SHIELDED</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Data & Security</p>
-                    <p class="text-sm mb-6 h-12">AMD Ryzen 7 PRO. Hosts Wazuh SIEM, Authentik Identity Core, and encrypted credentials.</p>
+                    <p class="text-sm mb-6 h-12 leading-relaxed">AMD Ryzen 7 PRO. Hosts Wazuh SIEM, Authentik Identity Core, and encrypted credentials.</p>
                 </div>
                 <div class="glass-panel p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-C: Go-zanti</h3><span class="status-badge" style="background: #0ea5e9; color: white;">GATEWAY</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Networking</p>
-                    <p class="text-sm mb-6 h-12">OPNsense perimeter firewall, VLAN gateway, and SSL termination controller.</p>
+                    <p class="text-sm mb-6 h-12 leading-relaxed">OPNsense perimeter firewall, VLAN gateway, and SSL termination controller.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 03. The Holocron Archive (Encryption Lock Active) -->
+        <!-- 03. The Holocron Archive -->
         <section id="holocron" class="max-w-7xl mx-auto px-6 py-20 relative overflow-hidden">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                 <div>
@@ -333,8 +306,6 @@
                     <span class="text-[--amber-alert] tech-data text-xs font-bold uppercase tracking-widest">Encryption Active</span>
                 </div>
             </div>
-
-            <!-- Deployment Countdown -->
             <div class="lock-overlay">
                 <div class="glass-panel inline-block px-12 py-8 border-2 border-[--amber-alert]">
                     <div class="tech-data text-[10px] text-[--amber-alert] mb-4 tracking-[0.2em] font-bold">DECRYPTING ARCHIVE_DATA</div>
@@ -342,13 +313,10 @@
                     <div class="tech-data text-[9px] mt-4 opacity-60 uppercase">Admiral Clearance Required // Go-Live Jan 05 PST</div>
                 </div>
             </div>
-            
-            <div id="holocronSlider" class="flex gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 px-1 locked-content">
-                <!-- Blog posts populated via JS -->
-            </div>
+            <div id="holocronSlider" class="flex gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 px-1 locked-content"></div>
         </section>
 
-        <!-- Recruitment Command Link -->
+        <!-- Recruiters -->
         <section id="tour" class="max-w-7xl mx-auto px-6 py-20 mb-32">
             <div class="glass-panel p-8 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden">
                 <div class="relative z-10">
@@ -370,7 +338,7 @@
         </section>
     </div>
 
-    <!-- ARCHIVE VIEW (Internal Locked State) -->
+    <!-- ARCHIVE VIEW -->
     <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-6 py-20">
         <div class="mb-12">
             <button onclick="showView('home')" class="tech-data text-xs text-[--saber-blue] mb-4 hover:underline">← BACK TO BRIDGE</button>
@@ -380,29 +348,62 @@
         <div class="text-center py-20 tech-data text-[--amber-alert] uppercase">Archive Locked Until Jan 05, 2026</div>
     </div>
 
-    <!-- ARCHITECT / ABOUT VIEW -->
+    <!-- ARCHITECT VIEW -->
     <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-6 py-20">
         <div class="mb-12"><button onclick="showView('home')" class="tech-data text-xs text-[--saber-blue] mb-4 hover:underline">← BACK TO BRIDGE</button></div>
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2 space-y-12">
                 <div class="glass-panel p-10 border-accent">
-                    <h1 class="text-3xl font-bold mb-6">The Architect Behind the Fleet</h1>
-                    <div class="space-y-6 text-lg leading-relaxed opacity-90">
-                        <p>I am an accomplished, results-oriented Information Technology professional with over seven years of extensive experience managing complex environments for industry leaders such as <strong>Team Liquid, Stagwell, and Creative Artists Agency (CAA)</strong>.</p>
-                        <p>My career is built on the principle of Operational Excellence and a "Measure Twice, Cut Once" philosophy. I treat infrastructure as a version-controlled product, transitioning workloads from static hardware to resilient High Availability (HA) clusters.</p>
-                        <p>The <strong>Alliance Fleet</strong> serves as my personal R&D center—a sandbox where I simulate real-world threats and hardware failures to refine incident response and infrastructure resilience.</p>
+                    <h1 class="text-3xl font-bold mb-8">The Architect Behind the Fleet</h1>
+                    
+                    <div class="space-y-10 text-lg leading-relaxed opacity-90">
+                        <section>
+                            <h3 class="tech-data text-xs text-[--saber-blue] mb-6 font-bold tracking-widest">Architectural Profile</h3>
+                            <p class="mb-6">Welcome to the Alliance Holocron. I am an accomplished, results-oriented Information Technology professional with over <strong>seven years</strong> of extensive experience managing complex environments for industry leaders.</p>
+                            <p>My career is built on the principle of <strong>Operational Excellence</strong> and a <strong>Measure Twice, Cut Once</strong> philosophy. Today, I leverage that enterprise foundation to architect the future of private cloud environments, specializing in virtualization, AI-driven orchestration (AIOps), and Zero-Trust networking.</p>
+                        </section>
+
+                        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
+                            <div class="p-6 rounded-2xl bg-white/20 border border-white/30">
+                                <h4 class="tech-data text-[10px] text-[--saber-blue] mb-3 font-bold">Creative Artists Agency</h4>
+                                <p class="text-sm opacity-80 leading-relaxed">Managed global asset lifecycles and secured executive-level accounts with rigorous identity standards.</p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-white/20 border border-white/30">
+                                <h4 class="tech-data text-[10px] text-[--saber-blue] mb-3 font-bold">Stagwell</h4>
+                                <p class="text-sm opacity-80 leading-relaxed">Acting primary escalation point for Tier III issues with a 95% ticket resolution rate.</p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-white/20 border border-white/30">
+                                <h4 class="tech-data text-[10px] text-[--saber-blue] mb-3 font-bold">Team Liquid</h4>
+                                <p class="text-sm opacity-80 leading-relaxed">Administered IT operations for high-stakes gaming environments via JAMF Pro and Intune.</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="tech-data text-xs text-[--saber-blue] mb-6 font-bold tracking-widest">The Alliance Mission</h3>
+                            <p class="leading-relaxed">The Alliance Fleet serves as my personal R&D center—a sandbox where I simulate real-world threats and hardware failures to refine infrastructure resilience. Backed by a <strong>Full Stack Web Development</strong> credential from UCLA Extension, I bridge the gap between traditional systems and modern automated software solutions.</p>
+                        </section>
                     </div>
                 </div>
             </div>
+            
             <div class="space-y-8">
-                <!-- Updated LinkedIn Reference -->
                 <div class="glass-panel p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)]">
                     <h3 class="tech-data text-[10px] mb-6 text-[--saber-blue] font-bold">Command Frequency</h3>
                     <div class="space-y-4">
                         <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center">LINKEDIN // PILOT ↗</a>
                         <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold">EMAIL // ADMIRAL ↗</button>
                     </div>
+                </div>
+                
+                <div class="glass-panel p-8">
+                    <h3 class="tech-data text-[10px] mb-6 text-[--saber-blue]">Learning Stack</h3>
+                    <ul class="text-sm space-y-4 opacity-80 font-semibold">
+                        <li>• Virtualization (Proxmox/ESXi)</li>
+                        <li>• Cloud-Native Automation</li>
+                        <li>• Zero-Trust Frameworks</li>
+                        <li>• AI Integration (LLM Ops)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -413,7 +414,6 @@
     </footer>
 
     <script>
-        const apiKey = ""; // Environment provided
         const blogPosts = [
             { id: "POST_08.1", category: "SECURITY", title: "The Identity Core: Authentik & Centralized IAM", tag: "SECURITY // IAM", excerpt: "Replicating Active Directory and Google Workspace environments for SSO and MFA." },
             { id: "POST_12.0", category: "AUTOMATION", title: "Standardizing the Fleet: Packer & Cloud-Init", tag: "AUTOMATION // IaC", excerpt: "Moving past manual installs into automated Infrastructure as Code deployment." },
@@ -421,9 +421,8 @@
         ];
 
         function startCountdown() {
-            // Target: Jan 5, 2026, 00:00:00 PST (UTC-8)
             const targetDate = new Date("2026-01-05T00:00:00-08:00").getTime();
-            const interval = setInterval(() => {
+            setInterval(() => {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
                 const el = document.getElementById("countdown");
@@ -431,10 +430,8 @@
                 
                 if (distance < 0) {
                     el.innerHTML = "00:00:00:00";
-                    clearInterval(interval);
                     return;
                 }
-
                 const d = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
                 const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
                 const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
@@ -454,63 +451,22 @@
                 const flash = document.getElementById('flashNotif');
                 flash.classList.add('flash-active');
                 setTimeout(() => flash.classList.remove('flash-active'), 3000);
-            } catch (err) { console.error('Transfer failed'); }
+            } catch (err) { console.error('Copy Error'); }
             document.body.removeChild(textArea);
         }
 
-        async function callGemini(prompt, systemPrompt = "") {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
-            try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error synthesizing data.";
-            } catch (err) { return "Intelligence system offline."; }
-        }
-
-        async function summarizePost(index) {
-            const post = blogPosts[index];
-            toggleAIModal(true);
-            const content = document.getElementById('aiContent');
-            const loading = document.getElementById('aiLoading');
-            content.innerText = "";
-            loading.classList.remove('hidden');
-
-            const result = await callGemini(
-                `Summarize this transmission for an admiral's briefing: Title: ${post.title}, Excerpt: ${post.excerpt}`, 
-                "You are a senior technical advisor for Tima Nlemvo's fleet. Provide high-level technical intelligence."
-            );
-            
-            loading.classList.add('hidden');
-            content.innerText = result;
-        }
-
-        function toggleAIModal(show) {
-            const modal = document.getElementById('aiModal');
-            if (show) modal.classList.remove('hidden');
-            else modal.classList.add('hidden');
-        }
-
         function renderPosts() {
-            const html = blogPosts.map((post, idx) => `
+            const html = blogPosts.map((post) => `
                 <article class="glass-panel blog-card p-8 flex flex-col min-w-[100%] md:min-w-[48%] lg:min-w-[31.5%] snap-start">
                     <div class="flex justify-between mb-4">
                         <span class="category-tag">${post.tag}</span>
                         <span class="tech-data text-[9px] opacity-40">${post.id}</span>
                     </div>
                     <h3 class="font-bold mb-4 text-slate-800">${post.title}</h3>
-                    <p class="text-sm opacity-60 mb-6 flex-grow">${post.excerpt}</p>
-                    <div class="flex justify-between items-center opacity-20 pointer-events-none">
-                        <span class="tech-data text-[10px]">READ_TRANSMISSION →</span>
-                        <button onclick="summarizePost(${idx})" class="text-[10px] font-bold">✨ SUMMARY</button>
-                    </div>
+                    <p class="text-sm opacity-60 mb-6 flex-grow leading-relaxed">${post.excerpt}</p>
                 </article>
             `).join('');
-            
-            const slider = document.getElementById('holocronSlider');
-            const grid = document.getElementById('archiveGrid');
-            if (slider) slider.innerHTML = html;
-            if (grid) grid.innerHTML = html;
+            document.getElementById('holocronSlider').innerHTML = html;
         }
 
         function showView(viewId, sectionId = null) {
