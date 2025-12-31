@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tima Nlemvo | Senior IT Engineer</title>
+    <title>Tima Nlemvo | Infrastructure Architect</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
             --grid-navy: rgba(30, 58, 138, 0.1);
             --saber-blue: #00A3FF;
             --amber-alert: #FFB800;
-            --glass-bg: rgba(255, 255, 255, 0.9); /* Solid White Base */
+            --glass-bg: rgba(255, 255, 255, 0.9);
             --glass-border: rgba(255, 255, 255, 0.5);
         }
 
@@ -32,7 +32,7 @@
             text-transform: uppercase;
         }
 
-        /* Blueprint Background Pattern */
+        /* Blueprint Canvas Foundation */
         .blueprint-canvas {
             position: fixed;
             top: 0;
@@ -48,7 +48,7 @@
             background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
         }
 
-        /* Glassmorphism Panels */
+        /* Premium Glass Panels */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -70,7 +70,7 @@
             pointer-events: none;
         }
 
-        /* Tactical Pop Hover Effect */
+        /* Hover Interaction Tokens */
         .tactical-pop {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -115,7 +115,7 @@
             transform: scale(1.02);
         }
 
-        /* Lockdown Styles */
+        /* Encryption / Security Overlay */
         .locked-content {
             filter: blur(14px);
             pointer-events: none;
@@ -192,7 +192,7 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Tactical Avatar Styling */
+        /* Tactical Avatar Framing */
         .tactical-avatar {
             position: relative;
             width: 140px; height: 140px; flex-shrink: 0;
@@ -210,19 +210,14 @@
             border-radius: 50%; opacity: 0.3; animation: pulse-avatar 4s infinite ease-in-out;
         }
 
-        /* Swipe Indicator Dashes */
+        /* Slider Indicators */
         .indicator-dash {
-            width: 12px;
-            height: 3px;
-            background: rgba(0, 163, 255, 0.15);
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 12px; height: 3px; background: rgba(0, 163, 255, 0.15);
+            border-radius: 2px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .indicator-dash.active {
-            width: 28px;
-            background: var(--saber-blue);
-            box-shadow: 0 0 10px var(--saber-blue);
+            width: 28px; background: var(--saber-blue); box-shadow: 0 0 10px var(--saber-blue);
         }
 
         @keyframes pulse-avatar {
@@ -236,7 +231,7 @@
 <body>
     <div class="blueprint-canvas"></div>
 
-    <!-- Flash UI -->
+    <!-- Feedback UI -->
     <div id="flashNotif" class="flash-notif">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         <span>Transmission Copied to Clipboard</span>
@@ -253,7 +248,7 @@
                 <a href="javascript:void(0)" onclick="showView('home', 'fleet')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent">The Fleet</a>
                 <a href="javascript:void(0)" onclick="showView('archive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent">The Holocron</a>
                 <a href="javascript:void(0)" onclick="showView('architect')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent">About</a>
-                <a href="javascript:void(0)" onclick="showView('home', 'tour')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent">Guided Tour</a>
+                <a href="javascript:void(0)" onclick="showView('home', 'tour')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent">Briefing</a>
             </div>
         </nav>
     </div>
@@ -262,6 +257,7 @@
     <div id="home-view" class="view-transition px-4">
         <header class="max-w-7xl mx-auto pt-10 md:pt-20 pb-20 md:pb-32 text-slate-800">
             <div class="glass-panel p-6 md:p-16 relative overflow-hidden">
+                <!-- Schematic Decoration -->
                 <div class="absolute top-0 right-0 p-4 opacity-10 hidden md:block">
                     <svg width="200" height="200" viewBox="0 0 100 100">
                         <circle cx="50" cy="50" r="40" stroke="#1e3a5f" stroke-width="0.5" fill="none" />
@@ -271,53 +267,55 @@
                 
                 <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12 relative z-10">
                     <div class="text-center md:text-left">
+                        <!-- Mobile Avatar -->
                         <div class="flex justify-center md:hidden mb-6">
                             <div class="tactical-avatar">
                                 <div class="avatar-glow"></div>
-                                <img src="Memoji.png" alt="Tima Nlemvo Memoji" onerror="this.style.display='none'">
+                                <img src="Memoji.png" alt="Tima Nlemvo Avatar" onerror="this.style.display='none'">
                             </div>
                         </div>
                         
                         <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 tracking-tight">Tima Nlemvo</h1>
-                        <p class="tech-data text-[--saber-blue] text-base md:text-xl mb-8">Senior IT Engineer | Infrastructure Architect</p>
+                        <p class="tech-data text-[--saber-blue] text-base md:text-xl mb-8">Infrastructure Architect | Systems & Automation Lead</p>
                         <div class="max-w-2xl border-accent pl-4 md:pl-6 mb-12 mx-auto md:mx-0">
                             <p class="text-base md:text-xl text-left leading-relaxed opacity-80">
-                                I don't just build systems; I architect resilience. With over 7 years of operational experience managing high-stakes infrastructure for industry leaders, I establish excellence through architectural design.
+                                I don't build systems; I architect resilience. With over 7 years of operational experience managing high-stakes infrastructure for industry leaders, I establish excellence through architectural design.
                             </p>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            <button onclick="showView('archive')" class="btn-primary tactical-pop text-center w-full sm:w-auto text-sm md:text-base">ENTER THE HOLOCRON: VIEW THE FLEET</button>
-                            <button onclick="showView('architect')" class="btn-secondary tactical-pop text-center w-full sm:w-auto text-sm md:text-base">MEET THE ARCHITECT</button>
+                            <button onclick="showView('archive')" class="btn-primary tactical-pop text-center w-full sm:w-auto text-sm md:text-base">ACCESS THE HOLOCRON</button>
+                            <button onclick="showView('architect')" class="btn-secondary tactical-pop text-center w-full sm:w-auto text-sm md:text-base">IDENTIFY ARCHITECT</button>
                         </div>
                     </div>
 
+                    <!-- Desktop Avatar -->
                     <div class="hidden md:flex flex-col items-center gap-4">
                         <div class="tactical-avatar">
                             <div class="avatar-glow"></div>
-                            <img src="Memoji.png" alt="Tima Nlemvo Memoji" onerror="this.style.display='none'">
+                            <img src="Memoji.png" alt="Tima Nlemvo Avatar" onerror="this.style.display='none'">
                         </div>
-                        <span class="tech-data text-[10px] opacity-40">Architect Identified</span>
+                        <span class="tech-data text-[10px] opacity-40">System Architect Identified</span>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- 01. Professional Alignment Matrix (With Mobile Slider & Dash Indicator) -->
+        <!-- 01. Professional Alignment Matrix -->
         <section id="alignment" class="max-w-7xl mx-auto py-10 md:py-20 text-slate-800">
             <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
             
             <div class="glass-panel overflow-hidden">
-                <!-- Desktop Table Header (Visible only on Desktop) -->
+                <!-- Desktop Table Header -->
                 <div class="hidden md:grid grid-cols-12 bg-white/50 tech-data text-xs uppercase font-bold border-b border-white/20">
                     <div class="col-span-3 p-6 border-r border-white/10">Category</div>
                     <div class="col-span-4 p-6 border-r border-white/10">Enterprise Expertise</div>
                     <div class="col-span-5 p-6">The Alliance Implementation (Lab)</div>
                 </div>
 
-                <!-- Matrix Logic: Slider on Mobile, Table Rows on Desktop -->
+                <!-- Matrix Logic -->
                 <div id="matrixSlider" class="flex md:block overflow-x-auto snap-x snap-mandatory hide-scrollbar md:divide-y md:divide-white/20">
                     
-                    <!-- Dash 0: IAM -->
+                    <!-- Row 1: IAM -->
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
@@ -333,7 +331,7 @@
                         </div>
                     </div>
 
-                    <!-- Dash 1: Reliability -->
+                    <!-- Row 2: Reliability -->
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
@@ -349,7 +347,7 @@
                         </div>
                     </div>
 
-                    <!-- Dash 2: Endpoints -->
+                    <!-- Row 3: Endpoints -->
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
@@ -365,7 +363,7 @@
                         </div>
                     </div>
 
-                    <!-- Dash 3: Networking -->
+                    <!-- Row 4: Networking -->
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
@@ -383,14 +381,14 @@
                 </div>
             </div>
 
-            <!-- Mobile Slider Dash Indicators -->
+            <!-- Mobile Swipe Dash -->
             <div id="matrixIndicators" class="flex md:hidden justify-center items-center gap-2 mt-6">
                 <div class="indicator-dash active" data-index="0"></div>
                 <div class="indicator-dash" data-index="1"></div>
                 <div class="indicator-dash" data-index="2"></div>
                 <div class="indicator-dash" data-index="3"></div>
             </div>
-            <div class="md:hidden mt-2 text-center tech-data text-[7px] opacity-30 uppercase tracking-[0.2em]">Swipe to Navigate Alignment Data</div>
+            <div class="md:hidden mt-2 text-center tech-data text-[7px] opacity-30 uppercase tracking-[0.2em]">Swipe to Shift Parameters</div>
         </section>
 
         <!-- 02. Fleet Status -->
@@ -400,27 +398,27 @@
                 <div class="glass-panel p-6 md:p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-A: Falcon</h3><span class="status-badge">ACTIVE</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Compute & AI</p>
-                    <p class="text-sm mb-6 leading-relaxed">Intel Core Ultra 9, 64GB DDR5. High-density AI inference and complex automation.</p>
+                    <p class="text-sm mb-6 leading-relaxed">Intel Ultra 9 Hybrid Architecture. Dedicated LLM inference via PCIe GPU Passthrough.</p>
                 </div>
                 <div class="glass-panel p-6 md:p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-B: Corvette</h3><span class="status-badge">SHIELDED</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Data & Security</p>
-                    <p class="text-sm mb-6 leading-relaxed">AMD Ryzen 7 PRO. Hosts Wazuh SIEM, Authentik Identity Core, and encrypted credentials.</p>
+                    <p class="text-sm mb-6 leading-relaxed">AMD Ryzen PRO / ECC Memory. Immutable storage hub with Wazuh threat monitoring.</p>
                 </div>
                 <div class="glass-panel p-6 md:p-8 relative">
                     <div class="flex justify-between items-start mb-6"><h3 class="font-bold text-lg">Node-C: Go-zanti</h3><span class="status-badge" style="background: #0ea5e9; color: white;">GATEWAY</span></div>
                     <p class="tech-data text-[10px] opacity-60 mb-2">Role: Networking</p>
-                    <p class="text-sm mb-6 leading-relaxed">OPNsense perimeter firewall, VLAN gateway, and SSL termination controller.</p>
+                    <p class="text-sm mb-6 leading-relaxed">Dual 2.5GbE SDN Gateway. Perimeter firewall and traffic control.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 03. The Holocron Archive -->
+        <!-- 03. Technical Archive -->
         <section id="holocron" class="max-w-7xl mx-auto py-10 md:py-20 relative overflow-hidden">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
                 <div class="mb-4 md:mb-0">
                     <h2 class="text-xl md:text-2xl font-bold mb-4 flex items-center gap-4"><span class="text-[--saber-blue]">03.</span> The Holocron: Technical Archive</h2>
-                    <p class="opacity-60 max-w-xl text-sm md:text-base text-slate-800">Deep-dives into the implementation of the fleet.</p>
+                    <p class="opacity-60 max-w-xl text-sm md:text-base text-slate-800">Operational logs from the front lines of infrastructure design.</p>
                 </div>
                 <div>
                     <span class="text-[--amber-alert] tech-data text-[10px] md:text-xs font-bold uppercase tracking-widest">Encryption Active</span>
@@ -438,21 +436,21 @@
             </div>
         </section>
 
-        <!-- Recruiters -->
+        <!-- Briefing Room -->
         <section id="tour" class="max-w-7xl mx-auto py-10 md:py-20 mb-20 md:mb-32">
-            <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden">
-                <div class="relative z-10 text-slate-800">
-                    <h2 class="tech-data text-lg md:text-xl mb-6">Note to Recruiters // The Guided Tour</h2>
+            <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden text-slate-800">
+                <div class="relative z-10">
+                    <h2 class="tech-data text-lg md:text-xl mb-6">Briefing Room // Request a Tactical Tour</h2>
                     <p class="text-base md:text-lg opacity-80 mb-8 leading-relaxed">
-                        Looking for an engineer who treats every project with the rigor of a production data center? <strong>I am happy to hop on a screen-share for a "Guided Tour" of the Alliance.</strong>
+                        Seeking an architect who applies enterprise-grade rigor to every line of configuration? I am standing by to provide a live deep-dive of the Alliance Fleet and demonstrate how I bridge the gap between R&D and production-ready resilience.
                     </p>
                     <div class="space-y-6">
                         <div class="tech-data text-[10px] md:text-xs py-3 px-4 md:px-6 rounded-lg border border-[--amber-alert] bg-[--amber-alert]/10 flex items-center gap-3">
                             <span class="animate-pulse">⚠️</span> TACTICAL ALIGNMENT STRATEGIST: OFFLINE FOR MAINTENANCE
                         </div>
                         <div class="flex flex-col sm:flex-row gap-4 mt-6">
-                            <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1">LINKEDIN // PILOT ↗</a>
-                            <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1 font-bold uppercase tracking-wider">Email // Admiral ↗</button>
+                            <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1 uppercase tracking-widest">LINKEDIN // PILOT ↗</a>
+                            <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center flex-1 font-bold uppercase tracking-widest">Email // Admiral ↗</button>
                         </div>
                     </div>
                 </div>
@@ -461,13 +459,13 @@
     </div>
 
     <!-- ARCHIVE VIEW -->
-    <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-slate-800">
+    <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-slate-800 uppercase">
         <div class="mb-8 md:mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline">← BACK TO BRIDGE</button>
-            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase">The Holocron Archive</h1>
+            <h1 class="text-2xl md:text-4xl font-bold mb-4">The Holocron Archive</h1>
         </div>
         <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 locked-content"></div>
-        <div class="text-center py-20 tech-data text-[--amber-alert] uppercase text-xs md:text-sm">Archive Locked Until Jan 05, 2026</div>
+        <div class="text-center py-20 tech-data text-[--amber-alert] text-xs md:text-sm">Archive Locked Until Jan 05, 2026</div>
     </div>
 
     <!-- ARCHITECT VIEW -->
@@ -481,50 +479,50 @@
                 <div class="glass-panel p-5 md:p-10 border-accent">
                     <h1 class="text-2xl md:text-4xl font-bold mb-8 md:mb-10 tracking-tight">The Architect Behind the Fleet</h1>
                     
-                    <div class="space-y-8 md:space-y-10 text-base md:text-lg leading-relaxed opacity-90">
+                    <div class="space-y-8 md:space-y-10 text-base md:text-lg leading-relaxed opacity-95">
                         <section>
                             <h3 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 md:mb-6 font-bold tracking-widest border-b border-white/20 pb-2">Operational Philosophy</h3>
-                            <p class="mb-6 font-semibold">I don't just build systems; I architect resilience. My career has been defined by high-stakes deployments where operational excellence is the only acceptable baseline.</p>
-                            <p>With over <strong>seven years</strong> of experience managing complex IT environments for industry leaders, I have built a professional reputation on a <strong>Measure Twice, Cut Once</strong> philosophy. Today, I leverage that enterprise foundation to bridge the gap between traditional system administration and automated, software-defined infrastructure.</p>
+                            <p class="mb-6 font-semibold">I don't just build systems; I architect cloud-native resilience. My career is defined by transitioning static workloads into high-availability, automated environments where infrastructure is treated as code.</p>
+                            <p>With over seven years of senior-level experience, I bridge the gap between traditional system administration and the future of Automated IT Infrastructure. I believe a professional environment is defined by its recovery time, its documentation, and its ability to heal itself without manual intervention.</p>
                         </section>
 
                         <section>
                             <h3 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-6 font-bold tracking-widest border-b border-white/20 pb-2">Operational Record</h3>
                             <div class="grid grid-cols-1 gap-6">
-                                <div class="p-5 md:p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
-                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity">Sector: Entertainment</div>
-                                    <div class="sm:hidden tech-data text-[8px] opacity-40 mb-2 text-right">Sector: Entertainment</div>
-                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold">Creative Artists Agency (CAA)</h4>
-                                    <p class="text-[10px] tech-data opacity-40 mb-3">Helpdesk & Asset Lead | 2019 – 2021</p>
+                                <!-- Team Liquid -->
+                                <div class="p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
+                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity uppercase">Sector: Esports & Gaming</div>
+                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold uppercase">Team Liquid</h4>
+                                    <p class="text-[10px] tech-data opacity-40 mb-3 uppercase">IT Systems Specialist | 2023 – Present</p>
                                     <p class="text-sm md:text-base leading-relaxed">
-                                        Acted as the primary escalation point for <strong>Tier III technical operations</strong>, significantly enhancing resolution workflows for executive-level accounts. Managed the global IT asset lifecycle from procurement to disposal. Oversaw <strong>SCCM</strong> software deployment environments and optimized <strong>Active Directory</strong> infrastructure while initiating security policy overhauls and self-service troubleshooting guides.
+                                        Orchestrate Tier I-III technical support and system operations for world-class competitive gaming environments. Administer user access and identity governance across Google Workspace, streamlining automated access workflows for over 200 high-performance users. Collaborate cross-functionally to rectify complex network and audio-visual issues, ensuring zero-latency readiness in critical fleet environments.
                                     </p>
                                 </div>
-                                <div class="p-5 md:p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
-                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity">Sector: Esports & Gaming</div>
-                                    <div class="sm:hidden tech-data text-[8px] opacity-40 mb-2 text-right">Sector: Esports & Gaming</div>
-                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold">Team Liquid</h4>
-                                    <p class="text-[10px] tech-data opacity-40 mb-3">Information Technology Specialist | 2023 – Present</p>
+                                <!-- Stagwell -->
+                                <div class="p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
+                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity uppercase">Sector: Global Marketing</div>
+                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold uppercase">Stagwell</h4>
+                                    <p class="text-[10px] tech-data opacity-40 mb-3 uppercase">Sr. Infrastructure Engineer | 2021 – 2023</p>
                                     <p class="text-sm md:text-base leading-relaxed">
-                                        Orchestrate Tier I-III technical support for world-class competitive gaming environments, achieving high satisfaction rates for over 200 users. Lead hardware installations and identity governance across <strong>Google Workspace</strong>. Collaborated with teams to troubleshoot complex hardware and AV issues, ensuring zero-latency readiness in high-visibility fleet operations.
+                                        Sustained a consistent 95% resolution rate across enterprise cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro, managing critical service upgrades. Provided actionable technical strategy for C-suite executives, translating complex infrastructure needs into seamless operational solutions.
                                     </p>
                                 </div>
-                                <div class="p-5 md:p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
-                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity">Sector: Global Marketing</div>
-                                    <div class="sm:hidden tech-data text-[8px] opacity-40 mb-2 text-right">Sector: Global Marketing</div>
-                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold">Stagwell</h4>
-                                    <p class="text-[10px] tech-data opacity-40 mb-3">Sr. Information Technology Engineer | 2021 – 2023</p>
+                                <!-- CAA -->
+                                <div class="p-6 rounded-2xl bg-white/50 border border-white/30 relative overflow-hidden group">
+                                    <div class="hidden sm:block absolute top-0 right-0 p-3 tech-data text-[8px] opacity-20 group-hover:opacity-100 transition-opacity uppercase">Sector: Entertainment</div>
+                                    <h4 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-1 font-bold uppercase">Creative Artists Agency (CAA)</h4>
+                                    <p class="text-[10px] tech-data opacity-40 mb-3 uppercase">Service Desk & Asset Lead | 2019 – 2021</p>
                                     <p class="text-sm md:text-base leading-relaxed">
-                                        Sustained a consistent <strong>95% resolution rate</strong> for enterprise cloud applications. Managed core services including <strong>antivirus, backups, imaging, and patching</strong>. Specialized in Mac device administration via <strong>JAMF Pro</strong> and provided actionable technical solutions for C-suite executives, securing a high-stakes corporate landscape.
+                                        Acted as the primary escalation point for Tier III technical operations. Oversaw the SCCM environment for automated software deployments and optimized Active Directory infrastructure for global performance. Executed a comprehensive overhaul of IT policies, significantly improving security standards and global asset lifecycle procurement from end-to-end.
                                     </p>
                                 </div>
                             </div>
                         </section>
 
                         <section>
-                            <h3 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 md:mb-6 font-bold tracking-widest border-b border-white/20 pb-2">Current Mission</h3>
+                            <h3 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 md:mb-6 font-bold tracking-widest border-b border-white/20 pb-2">Current R&D Focus</h3>
                             <p class="leading-relaxed">
-                                The <strong>Alliance Fleet</strong> serves as my personal R&D center—a sandbox where I simulate threats to refine infrastructure resilience. Backed by a <strong>Full Stack Web Development</strong> credential from UCLA Extension, I bridge the gap between traditional system administration and automated software solutions.
+                                The Alliance Fleet serves as a sandbox for mastering Software-Defined Networking and Cloud-Native Automation. Backed by a Full Stack Web Development credential from UCLA Extension, I bridge the gap between infrastructure and code, building self-healing systems that mirror the rigor of enterprise production data centers.
                             </p>
                         </section>
                     </div>
@@ -533,25 +531,24 @@
             
             <div class="space-y-6 md:space-y-8">
                 <div class="glass-panel p-5 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)]">
-                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest text-slate-800">Command Frequency</h3>
+                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest uppercase text-slate-800">Command Frequency</h3>
                     <div class="space-y-4">
-                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center">LINKEDIN // PILOT ↗</a>
-                        <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold uppercase tracking-wider">Email // Admiral ↗</button>
+                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center uppercase tracking-widest">LINKEDIN // PILOT ↗</a>
+                        <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold uppercase tracking-widest">Email // Admiral ↗</button>
                     </div>
                 </div>
                 
                 <div class="glass-panel p-5 md:p-8 text-slate-800">
                     <h3 class="tech-data text-[10px] md:text-xs mb-4 md:mb-6 text-[--saber-blue] tracking-widest uppercase">Active Learning Stack</h3>
                     <ul class="text-xs md:text-sm space-y-4 opacity-80 font-semibold">
-                        <li>• Virtualization (Proxmox / ESXi)</li>
-                        <li>• Infrastructure as Code (IaC)</li>
-                        <li>• Enterprise MDM (JAMF / Intune)</li>
-                        <li>• Modern ITSM (ServiceNow / ITIL)</li>
-                        <li>• Hybrid Identity (AD / Google)</li>
-                        <li>• Zero-Trust & Network Security</li>
-                        <li>• Full Stack Development (UCLA)</li>
-                        <li>• LLM & AI Orchestration</li>
-                        <li>• Site Reliability Engineering</li>
+                        <li>• Cloud Virtualization (Proxmox / ESXi)</li>
+                        <li>• Infrastructure as Code (Packer / Terraform)</li>
+                        <li>• SDN (OPNsense / VLAN Segmentation)</li>
+                        <li>• Hybrid Identity (Entra ID / Google)</li>
+                        <li>• SIEM & Compliance (Wazuh / Wazuh)</li>
+                        <li>• Automated MDM (JAMF Pro / Intune)</li>
+                        <li>• API Orchestration (n8n / JavaScript)</li>
+                        <li>• LLM & local AI (Ollama / GPU Passthrough)</li>
                     </ul>
                 </div>
             </div>
@@ -564,9 +561,9 @@
 
     <script>
         const blogPosts = [
-            { id: "POST_08.1", category: "SECURITY", title: "The Identity Core: Authentik & Centralized IAM", tag: "SECURITY // IAM", excerpt: "Replicating Active Directory and Google Workspace environments for SSO and MFA." },
-            { id: "POST_12.0", category: "AUTOMATION", title: "Standardizing the Fleet: Packer & Cloud-Init", tag: "AUTOMATION // IaC", excerpt: "Moving past manual installs into automated Infrastructure as Code deployment." },
-            { id: "POST_08.0", category: "SECURITY", title: "The Watchtower: Wazuh SIEM & Compliance", tag: "SECURITY // SIEM", excerpt: "Enterprise-grade security monitoring, log analysis, and threat detection." }
+            { id: "POST_08.1", category: "SECURITY", title: "Cloud Identity: Authentik & Centralized IAM", tag: "CLOUD // IAM", excerpt: "Replicating enterprise Active Directory environments for SSO and MFA." },
+            { id: "POST_12.0", category: "AUTOMATION", title: "Fleet Standardization: Packer & Cloud-Init", tag: "AUTOMATION // IAC", excerpt: "Moving past manual installs into automated, reproducible deployments." },
+            { id: "POST_08.0", category: "SECURITY", title: "The Security Vault: SIEM & Log Aggregation", tag: "SECURITY // SOC", excerpt: "Implementing Wazuh for real-time threat detection and fleet compliance." }
         ];
 
         // Global Scroll direction tracker for Navigation
@@ -582,7 +579,7 @@
             lastScrollY = window.scrollY;
         });
 
-        // Mobile Matrix Slider Indicator Logic
+        // Matrix Horizontal Slider Dash Logic
         const matrixSlider = document.getElementById('matrixSlider');
         const matrixDashes = document.querySelectorAll('#matrixIndicators .indicator-dash');
 
@@ -629,7 +626,7 @@
                 const flash = document.getElementById('flashNotif');
                 flash.classList.add('flash-active');
                 setTimeout(() => flash.classList.remove('flash-active'), 3000);
-            } catch (err) { console.error('Copy Error'); }
+            } catch (err) { console.error('Transfer Failed'); }
             document.body.removeChild(textArea);
         }
 
@@ -641,7 +638,7 @@
                         <span class="tech-data text-[9px] opacity-40">${post.id}</span>
                     </div>
                     <h3 class="font-bold mb-4 text-slate-800 text-sm md:text-base">${post.title}</h3>
-                    <p class="text-xs md:text-sm opacity-60 mb-6 flex-grow leading-relaxed text-slate-800">${post.excerpt}</p>
+                    <p class="text-xs md:text-sm opacity-70 mb-6 flex-grow leading-relaxed">${post.excerpt}</p>
                 </article>
             `).join('');
             const slider = document.getElementById('holocronSlider');
