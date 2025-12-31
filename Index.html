@@ -210,6 +210,21 @@
             border-radius: 50%; opacity: 0.3; animation: pulse-avatar 4s infinite ease-in-out;
         }
 
+        /* Swipe Indicator Dashes */
+        .indicator-dash {
+            width: 12px;
+            height: 3px;
+            background: rgba(0, 163, 255, 0.15);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .indicator-dash.active {
+            width: 28px;
+            background: var(--saber-blue);
+            box-shadow: 0 0 10px var(--saber-blue);
+        }
+
         @keyframes pulse-avatar {
             0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.2; }
             50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.4; }
@@ -287,7 +302,7 @@
             </div>
         </header>
 
-        <!-- 01. Professional Alignment Matrix (With Mobile Slider) -->
+        <!-- 01. Professional Alignment Matrix (With Mobile Slider & Dash Indicator) -->
         <section id="alignment" class="max-w-7xl mx-auto py-10 md:py-20 text-slate-800">
             <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
             
@@ -300,10 +315,10 @@
                 </div>
 
                 <!-- Matrix Logic: Slider on Mobile, Table Rows on Desktop -->
-                <div class="flex md:block overflow-x-auto snap-x snap-mandatory hide-scrollbar md:divide-y md:divide-white/20">
+                <div id="matrixSlider" class="flex md:block overflow-x-auto snap-x snap-mandatory hide-scrollbar md:divide-y md:divide-white/20">
                     
-                    <!-- Row 1: IAM -->
-                    <div class="min-w-[85%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors">
+                    <!-- Dash 0: IAM -->
+                    <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
                             <p class="font-bold tech-data text-sm text-[--saber-blue] md:text-slate-800 uppercase tracking-tighter">Identity & Access Management (IAM)</p>
@@ -318,8 +333,8 @@
                         </div>
                     </div>
 
-                    <!-- Row 2: Reliability -->
-                    <div class="min-w-[85%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors">
+                    <!-- Dash 1: Reliability -->
+                    <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
                             <p class="font-bold tech-data text-sm text-[--saber-blue] md:text-slate-800 uppercase tracking-tighter">Infrastructure Reliability</p>
@@ -334,8 +349,8 @@
                         </div>
                     </div>
 
-                    <!-- Row 3: Endpoints -->
-                    <div class="min-w-[85%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors">
+                    <!-- Dash 2: Endpoints -->
+                    <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
                             <p class="font-bold tech-data text-sm text-[--saber-blue] md:text-slate-800 uppercase tracking-tighter">Endpoint Management</p>
@@ -350,8 +365,8 @@
                         </div>
                     </div>
 
-                    <!-- Row 4: Networking -->
-                    <div class="min-w-[85%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors">
+                    <!-- Dash 3: Networking -->
+                    <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 last:border-r-0 hover:bg-white/5 transition-colors p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 flex flex-col justify-center">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1">Category</span>
                             <p class="font-bold tech-data text-sm text-[--saber-blue] md:text-slate-800 uppercase tracking-tighter">Networking & Security</p>
@@ -366,12 +381,16 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Mobile Slider Hint -->
-                <div class="md:hidden p-2 text-center tech-data text-[8px] opacity-30 animate-pulse bg-white/20">
-                    < SCROLL HORIZONTALLY TO VIEW ALIGNMENT MATRIX >
-                </div>
             </div>
+
+            <!-- Mobile Slider Dash Indicators -->
+            <div id="matrixIndicators" class="flex md:hidden justify-center items-center gap-2 mt-6">
+                <div class="indicator-dash active" data-index="0"></div>
+                <div class="indicator-dash" data-index="1"></div>
+                <div class="indicator-dash" data-index="2"></div>
+                <div class="indicator-dash" data-index="3"></div>
+            </div>
+            <div class="md:hidden mt-2 text-center tech-data text-[7px] opacity-30 uppercase tracking-[0.2em]">Swipe to Navigate Alignment Data</div>
         </section>
 
         <!-- 02. Fleet Status -->
@@ -401,7 +420,7 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
                 <div class="mb-4 md:mb-0">
                     <h2 class="text-xl md:text-2xl font-bold mb-4 flex items-center gap-4"><span class="text-[--saber-blue]">03.</span> The Holocron: Technical Archive</h2>
-                    <p class="opacity-60 max-w-xl text-sm md:text-base">Deep-dives into the implementation of the fleet.</p>
+                    <p class="opacity-60 max-w-xl text-sm md:text-base text-slate-800">Deep-dives into the implementation of the fleet.</p>
                 </div>
                 <div>
                     <span class="text-[--amber-alert] tech-data text-[10px] md:text-xs font-bold uppercase tracking-widest">Encryption Active</span>
@@ -445,7 +464,7 @@
     <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-slate-800">
         <div class="mb-8 md:mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline">← BACK TO BRIDGE</button>
-            <h1 class="text-2xl md:text-4xl font-bold mb-4 text-slate-800 uppercase">The Holocron Archive</h1>
+            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase">The Holocron Archive</h1>
         </div>
         <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 locked-content"></div>
         <div class="text-center py-20 tech-data text-[--amber-alert] uppercase text-xs md:text-sm">Archive Locked Until Jan 05, 2026</div>
@@ -514,14 +533,14 @@
             
             <div class="space-y-6 md:space-y-8">
                 <div class="glass-panel p-5 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)]">
-                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest">Command Frequency</h3>
+                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest text-slate-800">Command Frequency</h3>
                     <div class="space-y-4">
                         <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center">LINKEDIN // PILOT ↗</a>
                         <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold uppercase tracking-wider">Email // Admiral ↗</button>
                     </div>
                 </div>
                 
-                <div class="glass-panel p-5 md:p-8">
+                <div class="glass-panel p-5 md:p-8 text-slate-800">
                     <h3 class="tech-data text-[10px] md:text-xs mb-4 md:mb-6 text-[--saber-blue] tracking-widest uppercase">Active Learning Stack</h3>
                     <ul class="text-xs md:text-sm space-y-4 opacity-80 font-semibold">
                         <li>• Virtualization (Proxmox / ESXi)</li>
@@ -539,7 +558,7 @@
         </div>
     </div>
 
-    <footer class="p-10 text-center opacity-40 tech-data text-[9px] md:text-[10px] tracking-widest uppercase">
+    <footer class="p-10 text-center opacity-40 tech-data text-[9px] md:text-[10px] tracking-widest uppercase text-slate-800">
         DESIGNED AS AN EXTENSION OF THE ALLIANCE HOLOCRON // © 2025 TIMA NLEMVO
     </footer>
 
@@ -550,6 +569,7 @@
             { id: "POST_08.0", category: "SECURITY", title: "The Watchtower: Wazuh SIEM & Compliance", tag: "SECURITY // SIEM", excerpt: "Enterprise-grade security monitoring, log analysis, and threat detection." }
         ];
 
+        // Global Scroll direction tracker for Navigation
         let lastScrollY = window.scrollY;
         const navWrapper = document.getElementById('mainNavWrapper');
 
@@ -561,6 +581,23 @@
             }
             lastScrollY = window.scrollY;
         });
+
+        // Mobile Matrix Slider Indicator Logic
+        const matrixSlider = document.getElementById('matrixSlider');
+        const matrixDashes = document.querySelectorAll('#matrixIndicators .indicator-dash');
+
+        if (matrixSlider) {
+            matrixSlider.addEventListener('scroll', () => {
+                const scrollLeft = matrixSlider.scrollLeft;
+                const width = matrixSlider.offsetWidth;
+                const index = Math.round(scrollLeft / width);
+                
+                matrixDashes.forEach((dash, i) => {
+                    if (i === index) dash.classList.add('active');
+                    else dash.classList.remove('active');
+                });
+            });
+        }
 
         function startCountdown() {
             const targetDate = new Date("2026-01-05T00:00:00-08:00").getTime();
@@ -604,7 +641,7 @@
                         <span class="tech-data text-[9px] opacity-40">${post.id}</span>
                     </div>
                     <h3 class="font-bold mb-4 text-slate-800 text-sm md:text-base">${post.title}</h3>
-                    <p class="text-xs md:text-sm opacity-60 mb-6 flex-grow leading-relaxed">${post.excerpt}</p>
+                    <p class="text-xs md:text-sm opacity-60 mb-6 flex-grow leading-relaxed text-slate-800">${post.excerpt}</p>
                 </article>
             `).join('');
             const slider = document.getElementById('holocronSlider');
