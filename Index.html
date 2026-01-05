@@ -25,7 +25,7 @@
             --glass-bg: rgba(5, 8, 15, 0.95); /* Darker obsidian glass */
             --glass-border: rgba(255, 255, 255, 0.05);
             --text-main: #f1f5f9;
-            --text-dim: #64748b;
+            --text-dim: #94a3b8;
             --shadow: rgba(0, 0, 0, 0.8);
             --ambient-glow: rgba(0, 163, 255, 0.95); /* Tripled brightness/opacity */
         }
@@ -249,7 +249,7 @@
             width: 28px; background: var(--saber-blue); box-shadow: 0 0 10px var(--saber-blue);
         }
 
-        /* Ambient Halo Effect for Archive - Redesigned to sit BEHIND the card */
+        /* Ambient Halo Effect for Archive */
         .archive-ambient-glow {
             position: absolute;
             top: 50%;
@@ -257,14 +257,13 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            /* HALO EFFECT: Hollow center with intense glowing perimeter */
             background: radial-gradient(circle, 
                 transparent 35%, 
                 var(--ambient-glow) 45%, 
                 rgba(0, 163, 255, 0.2) 60%, 
                 transparent 80%
             );
-            z-index: 1; /* Sits behind z-10 card */
+            z-index: 1;
             pointer-events: none;
             animation: halo-pulse 5s infinite ease-in-out;
         }
@@ -356,7 +355,7 @@
 
     <!-- BRIDGE / HOME VIEW -->
     <div id="home-view" class="view-transition px-4">
-        <header class="max-w-7xl mx-auto pt-10 md:pt-20 pb-20 md:pb-32 text-slate-800">
+        <header class="max-w-7xl mx-auto pt-10 md:pt-20 pb-20 md:pb-32">
             <div class="glass-panel p-6 md:p-16 relative overflow-hidden">
                 <!-- Schematic Decoration -->
                 <div class="absolute top-0 right-0 p-4 opacity-10 hidden md:block">
@@ -424,7 +423,7 @@
                         </div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1 uppercase">Enterprise Expertise</span>
-                            <p class="text-sm opacity-80 leading-relaxed text-slate-800">Active Directory, Google Workspace, User Access Governance.</p>
+                            <p class="text-sm opacity-80 leading-relaxed">Active Directory, Google Workspace, User Access Governance.</p>
                         </div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0">
                             <span class="md:hidden tech-data text-[8px] text-[--saber-blue] mb-1 uppercase font-bold">The Alliance Implementation (Lab)</span>
@@ -440,7 +439,7 @@
                         </div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1 uppercase">Enterprise Expertise</span>
-                            <p class="text-sm opacity-80 leading-relaxed text-slate-800">Backup solutions, Patching schedules, Enterprise Imaging.</p>
+                            <p class="text-sm opacity-80 leading-relaxed">Backup solutions, Patching schedules, Enterprise Imaging.</p>
                         </div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0">
                             <span class="md:hidden tech-data text-[8px] text-[--saber-blue] mb-1 uppercase font-bold">The Alliance Implementation (Lab)</span>
@@ -456,7 +455,7 @@
                         </div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1 uppercase">Enterprise Expertise</span>
-                            <p class="text-sm opacity-80 leading-relaxed text-slate-800">JAMF Pro, Microsoft Intune, SCCM, Device Encryption.</p>
+                            <p class="text-sm opacity-80 leading-relaxed">JAMF Pro, Microsoft Intune, SCCM, Device Encryption.</p>
                         </div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0">
                             <span class="md:hidden tech-data text-[8px] text-[--saber-blue] mb-1 uppercase font-bold">The Alliance Implementation (Lab)</span>
@@ -472,7 +471,7 @@
                         </div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10">
                             <span class="md:hidden tech-data text-[8px] opacity-40 mb-1 uppercase">Enterprise Expertise</span>
-                            <p class="text-sm opacity-80 leading-relaxed text-slate-800">Structured Cabling, Rack Management, Corporate Firewalls.</p>
+                            <p class="text-sm opacity-80 leading-relaxed">Structured Cabling, Rack Management, Corporate Firewalls.</p>
                         </div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0">
                             <span class="md:hidden tech-data text-[8px] text-[--saber-blue] mb-1 uppercase font-bold">The Alliance Implementation (Lab)</span>
@@ -534,7 +533,7 @@
                         <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
                             <div class="h-full bg-[--amber-alert] animate-[loading-bar_3s_infinite_ease-in-out]" style="width: 40%"></div>
                         </div>
-                        <div class="tech-data text-[8px] md:text-[9px] mt-6 opacity-60 uppercase tracking-widest text-dim">Fleet Deployment Protocol Initialized // Stay Tuned</div>
+                        <div class="tech-data text-[8px] md:text-[9px] mt-6 opacity-60 uppercase tracking-widest">Fleet Deployment Protocol Initialized // Stay Tuned</div>
                     </div>
                 </div>
                 <div id="holocronSlider" class="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 px-1 locked-content w-full"></div>
@@ -544,8 +543,8 @@
         <!-- Briefing Room -->
         <section id="tour" class="max-w-7xl mx-auto py-10 md:py-20 mb-20 md:mb-32">
             <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden">
-                <div class="relative z-10 text-slate-100">
-                    <h2 class="tech-data text-lg md:text-xl mb-6 text-main">Briefing Room // Request a Tactical Tour</h2>
+                <div class="relative z-10">
+                    <h2 class="tech-data text-lg md:text-xl mb-6">Briefing Room // Request a Tactical Tour</h2>
                     <p class="text-base md:text-lg opacity-80 mb-8 leading-relaxed">
                         Seeking an engineer who applies enterprise-grade rigor to every line of configuration? I am standing by to provide a live deep-dive of the Alliance Fleet and demonstrate how I bridge the gap between R&D and production-ready resilience.
                     </p>
@@ -610,7 +609,7 @@
     </div>
 
     <!-- ARCHITECT VIEW -->
-    <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-slate-800">
+    <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20">
         <div class="mb-8 md:mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline">← BACK TO BRIDGE</button>
         </div>
@@ -623,10 +622,10 @@
                             <div class="avatar-glow"></div>
                             <img src="NewMemoji.png" alt="Tima Nlemvo Avatar" onerror="this.src='https://raw.githubusercontent.com/timanlemvo/alliance-portfolio/54c37dce7e058291ac44ed0a6b602a9caa94bf56/NewMemoji.png'">
                         </div>
-                        <h1 class="text-2xl md:text-4xl font-bold tracking-tight uppercase text-main">The Engineer Behind the Fleet</h1>
+                        <h1 class="text-2xl md:text-4xl font-bold tracking-tight uppercase">The Engineer Behind the Fleet</h1>
                     </div>
                     
-                    <div class="space-y-8 md:space-y-10 text-base md:text-lg leading-relaxed opacity-95 text-main">
+                    <div class="space-y-8 md:space-y-10 text-base md:text-lg leading-relaxed opacity-95">
                         <section>
                             <h3 class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 md:mb-6 font-bold tracking-widest border-b border-white/20 pb-2">Operational Philosophy</h3>
                             <p class="mb-6 font-semibold">I don't just build systems; I engineer resilience. My career is defined by transitioning static workloads into high-availability, automated environments where infrastructure is treated as code.</p>
@@ -675,7 +674,7 @@
             
             <div class="space-y-6 md:space-y-8">
                 <div class="glass-panel p-5 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)]">
-                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest uppercase text-main">Command Frequency</h3>
+                    <h3 class="tech-data text-[10px] md:text-xs mb-6 text-[--saber-blue] font-bold tracking-widest uppercase">Command Frequency</h3>
                     <div class="space-y-4">
                         <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center uppercase tracking-widest">LINKEDIN // PILOT ↗</a>
                         <button onclick="copyEmail()" class="frequency-link block p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold uppercase tracking-widest">Email // Admiral ↗</button>
@@ -683,8 +682,8 @@
                 </div>
                 
                 <div class="glass-panel p-5 md:p-8">
-                    <h3 class="tech-data text-[10px] md:text-xs mb-4 md:mb-6 text-[--saber-blue] tracking-widest uppercase text-main">Active Learning Stack</h3>
-                    <ul class="text-xs md:text-sm space-y-4 opacity-80 font-semibold text-main">
+                    <h3 class="tech-data text-[10px] md:text-xs mb-4 md:mb-6 text-[--saber-blue] tracking-widest uppercase">Active Learning Stack</h3>
+                    <ul class="text-xs md:text-sm space-y-4 opacity-80 font-semibold">
                         <li>• Cloud Virtualization (Proxmox / ESXi)</li>
                         <li>• Infrastructure as Code (Packer / Terraform)</li>
                         <li>• SDN (OPNsense / VLAN Segmentation)</li>
