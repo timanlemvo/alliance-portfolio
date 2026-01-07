@@ -546,7 +546,179 @@
                                 <span class="group-open:rotate-180 transition-transform">▼</span>
                             </summary>
                             <div class="p-4 max-h-[300px] overflow-y-auto bg-slate-950 text-main">
-                                <pre class="tech-data text-[7px] leading-tight opacity-70 whitespace-pre-wrap font-bold uppercase">{"workflow": "Wazuh to OPNsense Block & Discord Alert"}</pre>
+                                <pre class="tech-data text-[7px] leading-tight opacity-70 whitespace-pre-wrap font-bold uppercase">{"workflow": "Wazuh to OPNsense Block & Discord Alert"}<br>{
+  "name": "Wazuh to OPNsense Block & Discord Alert",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wazuh-alert",
+        "options": {}
+      },
+      "id": "e0b5c1d2-1a2b-4c3d-8e5f-9g0h1i2j3k4l",
+      "name": "Wazuh Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "webhookId": "wazuh-alert"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.data.srcip }}",
+              "value2": "={{ undefined }}"
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{ $json.data.srcip }}",
+              "operation": "notContains",
+              "value2": "192.168."
+            },
+            {
+              "value1": "={{ $json.data.srcip }}",
+              "operation": "notContains",
+              "value2": "10.0."
+            },
+            {
+              "value1": "={{ $json.data.srcip }}",
+              "operation": "notContains",
+              "value2": "127.0.0.1"
+            }
+          ]
+        }
+      },
+      "id": "f1c6d2e3-2b3c-5d4e-9f6g-0h1i2j3k4l5m",
+      "name": "Safety Filter (Allowlist)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "Checks if Source IP exists AND excludes private ranges (192.168.x, 10.x, localhost) to prevent locking yourself out."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://<YOUR_OPNSENSE_IP>/api/firewall/alias_util/add/<YOUR_ALIAS_NAME>",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "address",
+              "value": "={{ $json.data.srcip }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "a2b3c4d5-3c4d-6e5f-0g7h-1i2j3k4l5m6n",
+      "name": "OPNsense API (Block IP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        940,
+        200
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YOUR_CREDENTIAL_ID_HERE",
+          "name": "OPNsense API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "<YOUR_DISCORD_WEBHOOK_URL>",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "embeds",
+              "value": "={{ [{\n  \"title\": \"🚨 Threat Blocked by OPNsense\",\n  \"description\": \"An active threat was detected by Wazuh and the IP has been added to the firewall blocklist.\",\n  \"color\": 15158332,\n  \"fields\": [\n    { \"name\": \"IP Address\", \"value\": $json.data.srcip, \"inline\": true },\n    { \"name\": \"Rule ID\", \"value\": $json.rule.id, \"inline\": true },\n    { \"name\": \"Severity\", \"value\": $json.rule.level, \"inline\": true },\n    { \"name\": \"Description\", \"value\": $json.rule.description, \"inline\": false },\n    { \"name\": \"Agent\", \"value\": $json.agent.name, \"inline\": false }\n  ],\n  \"footer\": { \"text\": \"Automated Response via n8n\" },\n  \"timestamp\": $now\n}] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3c4d5e6-4d5e-7f6g-1h8i-2j3k4l5m6n7o",
+      "name": "Discord Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1160,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c4d5e6f7-5e6f-8g7h-2i9j-3k4l5m6n7o8p",
+      "name": "No Action (Internal IP)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        940,
+        420
+      ]
+    }
+  ],
+  "connections": {
+    "Wazuh Webhook": {
+      "main": [
+        [
+          {
+            "node": "Safety Filter (Allowlist)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Safety Filter (Allowlist)": {
+      "main": [
+        [
+          {
+            "node": "OPNsense API (Block IP)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Action (Internal IP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OPNsense API (Block IP)": {
+      "main": [
+        [
+          {
+            "node": "Discord Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}</pre>
                             </div>
                         </details>
                     </div>
