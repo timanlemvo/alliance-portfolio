@@ -154,7 +154,6 @@
             align-items: center; gap: 10px;
             font-family: 'Space Mono', monospace; font-size: 12px;
             text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);
-            width: max-content; max-width: 90vw;
         }
 
         .flash-active { top: 24px; }
@@ -162,11 +161,6 @@
         .status-badge {
             font-size: 10px; padding: 2px 8px; border-radius: 4px;
             background: var(--amber-alert); color: #000; font-weight: bold;
-        }
-
-        .category-tag {
-            font-size: 9px; padding: 2px 6px; border: 1px solid var(--saber-blue);
-            color: var(--saber-blue); font-family: 'Space Mono', monospace; border-radius: 4px;
         }
 
         .border-accent { border-left: 4px solid var(--saber-blue); }
@@ -194,16 +188,6 @@
             width: 160px; height: 160px; border: 1px solid var(--saber-blue);
             border-radius: 50%; opacity: 0.3; animation: pulse-avatar 4s infinite ease-in-out;
             box-shadow: inset 0 0 20px var(--saber-blue);
-        }
-
-        /* Slider Indicators */
-        .indicator-dash {
-            width: 12px; height: 3px; background: rgba(128, 128, 128, 0.2);
-            border-radius: 2px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .indicator-dash.active {
-            width: 28px; background: var(--saber-blue); box-shadow: 0 0 10px var(--saber-blue);
         }
 
         /* Ambient Halo Effect */
@@ -280,6 +264,17 @@
             opacity: 0.4;
         }
 
+        /* Code Block "Pop" Styling */
+        .code-pop {
+            font-family: 'Space Mono', monospace;
+            background: #010409;
+            color: #f1f5f9;
+            border: 1px solid rgba(0, 163, 255, 0.2);
+        }
+        .code-key { color: var(--saber-blue); font-weight: bold; }
+        .code-value { color: #f1f5f9; }
+        .code-comment { color: #64748b; font-style: italic; }
+
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -305,7 +300,6 @@
             
             <div class="flex flex-wrap justify-center gap-2 md:space-x-1 tech-data text-[10px] md:text-xs items-center mt-4 md:mt-0">
                 <a href="javascript:void(0)" onclick="showView('home', 'alignment')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">Alignment</a>
-                <!-- CORRECTED NAVIGATION FONT: Removed font-bold for uniformity -->
                 <a href="javascript:void(0)" onclick="showView('deep-dive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">The Fleet</a>
                 <a href="javascript:void(0)" onclick="showView('archive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">Holocron Logs</a>
                 <a href="javascript:void(0)" onclick="showView('architect')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">About</a>
@@ -339,7 +333,7 @@
                         </div>
                         
                         <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 tracking-tight uppercase">Tima Nlemvo</h1>
-                        <p class="tech-data text-[--saber-blue] text-base md:text-xl mb-8 uppercase">Systems Engineer | Infrastructure & Networking | Automation & Cloud Implementation</p>
+                        <p class="tech-data text-[--saber-blue] text-base md:text-xl mb-8 uppercase tracking-widest font-bold">Systems Engineer | Infrastructure & Networking | Automation & Cloud Implementation</p>
                         <div class="max-w-2xl border-accent pl-4 md:pl-6 mb-12 mx-auto md:mx-0 text-main">
                             <p class="text-base md:text-xl text-left leading-relaxed opacity-80 uppercase tracking-tight font-medium">
                                 I don't just build systems; I engineer resilience. With over 7 years of operational experience managing high-stakes infrastructure for industry leaders, I establish excellence through technical implementation.
@@ -363,8 +357,8 @@
         </header>
 
         <!-- 01. Professional Alignment Matrix -->
-        <section id="alignment" class="max-w-7xl mx-auto py-10 md:py-20">
-            <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4 uppercase tracking-tighter text-main"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
+        <section id="alignment" class="max-w-7xl mx-auto py-10 md:py-20 text-main">
+            <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4 uppercase tracking-tighter"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
             <div class="glass-panel overflow-hidden text-sm">
                 <div class="hidden md:grid grid-cols-12 bg-white/5 tech-data text-xs uppercase font-bold border-b border-white/10">
                     <div class="col-span-3 p-6 border-r border-white/10">Category</div>
@@ -375,19 +369,15 @@
                 <div id="matrixSlider" class="flex md:block overflow-x-auto snap-x snap-mandatory hide-scrollbar md:divide-y md:divide-white/10">
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 text-main"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Identity Management (IAM)</p></div>
-                        <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed">Active Directory, Google Workspace, User Access Governance.</p></div>
+                        <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed font-semibold">Active Directory, Google Workspace, User Access Governance.</p></div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0"><p class="font-semibold text-[--saber-blue] uppercase text-[11px] leading-relaxed tracking-tight">Authentik: Centralized OIDC/SAML, MFA Enforcement, and SSO bridging for all cluster services.</p></div>
                     </div>
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 p-2 md:p-0">
                         <div class="p-5 md:p-6 md:col-span-3 text-main"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Infrastructure Reliability</p></div>
-                        <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed">Backup solutions, Patching schedules, Enterprise Imaging.</p></div>
+                        <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed font-semibold">Backup solutions, Patching schedules, Enterprise Imaging.</p></div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0"><p class="font-semibold text-[--saber-blue] uppercase text-[11px] leading-relaxed tracking-tight">Proxmox VE & ZFS: Atomic snapshots, self-healing file systems, and real-time telemetry.</p></div>
                     </div>
                 </div>
-            </div>
-            <div id="matrixIndicators" class="flex md:hidden justify-center items-center gap-2 mt-6">
-                <div class="indicator-dash active" data-index="0"></div>
-                <div class="indicator-dash" data-index="1"></div>
             </div>
         </section>
 
@@ -432,8 +422,8 @@
         <section id="holocron" class="max-w-7xl mx-auto py-10 md:py-20 relative overflow-hidden">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
                 <div class="mb-4 md:mb-0">
-                    <h2 class="text-xl md:text-2xl font-bold mb-4 flex items-center gap-4 uppercase tracking-tighter text-main"><span class="text-[--saber-blue]">03.</span> The Holocron: Technical Archive</h2>
-                    <p class="opacity-60 max-w-xl text-sm md:text-base uppercase tracking-widest leading-relaxed text-main">Operational logs from the front lines of infrastructure engineering.</p>
+                    <h2 class="text-xl md:text-2xl font-bold mb-4 flex items-center gap-4 uppercase tracking-tighter text-main font-bold"><span class="text-[--saber-blue]">03.</span> The Holocron: Technical Archive</h2>
+                    <p class="opacity-60 max-w-xl text-sm md:text-base uppercase tracking-widest leading-relaxed text-main font-semibold">Operational logs from the front lines of infrastructure engineering.</p>
                 </div>
                 <div>
                     <span class="text-[--amber-alert] tech-data text-[10px] font-bold uppercase tracking-widest">Signal Encryption Active</span>
@@ -448,7 +438,7 @@
                         <div class="inline-block mx-auto mb-10 text-center">
                             <div class="tech-data text-4xl md:text-6xl font-bold animate-pulse mb-1 uppercase tracking-tighter text-main whitespace-nowrap">Coming Soon</div>
                             <div class="h-[4px] w-full bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 40%"></div>
+                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 30%"></div>
                             </div>
                         </div>
 
@@ -463,12 +453,11 @@
         <section id="tour" class="max-w-7xl mx-auto py-10 md:py-20 mb-20 md:mb-32">
             <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden text-main uppercase">
                 <div class="relative z-10 font-semibold">
-                    <h2 class="tech-data text-lg md:text-xl mb-6 tracking-widest text-[--amber-alert] font-bold">Briefing Room // Tactical Tour</h2>
+                    <h2 class="tech-data text-lg md:text-xl mb-6 tracking-widest text-[--amber-alert] font-bold uppercase">Briefing Room // Tactical Tour</h2>
                     <p class="text-base md:text-lg opacity-80 mb-12 leading-relaxed">
                         Looking for an engineer who treats every project with the rigor of a production data center? <strong>I am happy to hop on a screen-share for a "Guided Tour" of the Alliance Fleet.</strong>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6">
-                        <!-- Standardized Button Style -->
                         <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-5 rounded-2xl flex-1 text-sm font-bold uppercase tracking-widest tactical-pop">
                             LinkedIn // Pilot ↗
                         </a>
@@ -515,9 +504,8 @@
                             <thead class="bg-white/5 uppercase tracking-widest"><tr><th class="p-4">Network</th><th class="p-4">VLAN</th><th class="p-4">IP Range</th><th class="p-4">Strategy</th></tr></thead>
                             <tbody class="divide-y divide-white/5 opacity-80 uppercase text-main font-semibold">
                                 <tr><td class="p-4 font-bold">LAN (Mgmt)</td><td class="p-4">Native</td><td class="p-4">192.168.10.0/24</td><td class="p-4">Hypervisors, switch, OPNsense UI.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--saber-blue]">SERVERS</td><td class="p-4 text-[--saber-blue]">10</td><td class="p-4 text-[--saber-blue]">192.168.1.0/24</td><td class="p-4 text-[--saber-blue]">AI Models, SIEM, Databases.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--amber-alert]">IOT</td><td class="p-4 text-[--amber-alert]">20</td><td class="p-4 text-[--amber-alert]">192.168.20.0/24</td><td class="p-4 text-[--amber-alert]">Isolated (No lateral access).</td></tr>
-                                <tr><td class="p-4 font-bold text-[--saber-blue]">GUEST</td><td class="p-4 text-[--saber-blue]">30</td><td class="p-4 text-[--saber-blue]">192.168.30.0/24</td><td class="p-4 text-[--saber-blue]">Isolated WiFi for visitors (No lateral access).</td></tr>
+                                <tr><td class="p-4 font-bold text-[--saber-blue]">SERVERS</td><td class="p-4">10</td><td class="p-4">192.168.1.0/24</td><td class="p-4 text-[--saber-blue]">AI Models, SIEM, Databases.</td></tr>
+                                <tr><td class="p-4 font-bold text-[--amber-alert]">IOT</td><td class="p-4">20</td><td class="p-4">192.168.20.0/24</td><td class="p-4 text-[--amber-alert]">Isolated (No lateral access).</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -533,192 +521,64 @@
                 </div>
             </section>
 
-            <!-- IV. AI Ops & Automation -->
+            <!-- IV. AI Ops & Automation (WITH FULL POPPING JSON) -->
             <section class="pb-20">
                 <div class="flex items-center gap-4 mb-10"><h2 class="tech-data text-xl text-[--saber-blue] font-bold uppercase tracking-widest">IV. Automation & AI Ops</h2><span class="h-[1px] flex-grow bg-[--saber-blue]/20"></span></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-main">
                     <div class="glass-panel p-8">
                         <h3 class="tech-data text-sm font-bold text-[--saber-blue] mb-6 uppercase tracking-widest">The Tactical Droid (n8n)</h3>
                         <p class="text-[11px] opacity-70 leading-relaxed uppercase font-bold mb-6">API orchestrator for fleet maintenance and automated response logic.</p>
+                        
                         <details class="group border border-white/10 rounded-xl overflow-hidden bg-black/40">
-                            <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-white/5 transition-colors list-none tech-data text-[9px] uppercase tracking-widest text-[--saber-blue] font-bold">
-                                <span>View Logic JSON</span>
+                            <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-white/5 transition-colors list-none tech-data text-[9px] uppercase tracking-[0.3em] text-[--saber-blue] font-bold">
+                                <span>Open Code View: Workflow JSON</span>
                                 <span class="group-open:rotate-180 transition-transform">▼</span>
                             </summary>
-                            <div class="p-4 max-h-[300px] overflow-y-auto bg-slate-950 text-main">
-                                <pre class="tech-data text-[7px] leading-tight opacity-25 whitespace-pre-wrap font-bold uppercase">{"workflow": "Wazuh to OPNsense Block & Discord Alert"}<br>{
-  "name": "Wazuh to OPNsense Block & Discord Alert",
-  "nodes": [
+                            <div class="p-6 max-h-[500px] overflow-y-auto bg-slate-950/80 code-pop border-t border-white/5">
+                                <pre class="text-[10px] leading-relaxed whitespace-pre-wrap"><span class="code-key">{</span>
+  <span class="code-key">"name"</span>: <span class="code-value">"Wazuh to OPNsense Block & Discord Alert"</span>,
+  <span class="code-key">"nodes"</span>: [
     {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "wazuh-alert",
-        "options": {}
+      <span class="code-key">"parameters"</span>: {
+        <span class="code-key">"httpMethod"</span>: <span class="code-value">"POST"</span>,
+        <span class="code-key">"path"</span>: <span class="code-value">"wazuh-alert"</span>
       },
-      "id": "e0b5c1d2-1a2b-4c3d-8e5f-9g0h1i2j3k4l",
-      "name": "Wazuh Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 1,
-      "position": [
-        460,
-        300
-      ],
-      "webhookId": "wazuh-alert"
+      <span class="code-key">"name"</span>: <span class="code-value">"Wazuh Webhook"</span>,
+      <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.webhook"</span>
     },
     {
-      "parameters": {
-        "conditions": {
-          "boolean": [
+      <span class="code-key">"parameters"</span>: {
+        <span class="code-key">"conditions"</span>: {
+          <span class="code-key">"string"</span>: [
             {
-              "value1": "={{ $json.data.srcip }}",
-              "value2": "={{ undefined }}"
-            }
-          ],
-          "string": [
-            {
-              "value1": "={{ $json.data.srcip }}",
-              "operation": "notContains",
-              "value2": "192.168."
-            },
-            {
-              "value1": "={{ $json.data.srcip }}",
-              "operation": "notContains",
-              "value2": "10.0."
-            },
-            {
-              "value1": "={{ $json.data.srcip }}",
-              "operation": "notContains",
-              "value2": "127.0.0.1"
+              <span class="code-key">"value1"</span>: <span class="code-value">"={{ $json.data.srcip }}"</span>,
+              <span class="code-key">"operation"</span>: <span class="code-value">"notContains"</span>,
+              <span class="code-key">"value2"</span>: <span class="code-value">"192.168."</span>
             }
           ]
         }
       },
-      "id": "f1c6d2e3-2b3c-5d4e-9f6g-0h1i2j3k4l5m",
-      "name": "Safety Filter (Allowlist)",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        680,
-        300
-      ],
-      "notesInFlow": true,
-      "notes": "Checks if Source IP exists AND excludes private ranges (192.168.x, 10.x, localhost) to prevent locking yourself out."
+      <span class="code-key">"name"</span>: <span class="code-value">"Safety Filter (Allowlist)"</span>,
+      <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.if"</span>
     },
     {
-      "parameters": {
-        "method": "POST",
-        "url": "https://<YOUR_OPNSENSE_IP>/api/firewall/alias_util/add/<YOUR_ALIAS_NAME>",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBasicAuth",
-        "sendBody": true,
-        "contentType": "json",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "address",
-              "value": "={{ $json.data.srcip }}"
-            }
-          ]
-        },
-        "options": {
-          "allowUnauthorizedCerts": true
-        }
+      <span class="code-key">"parameters"</span>: {
+        <span class="code-key">"method"</span>: <span class="code-value">"POST"</span>,
+        <span class="code-key">"url"</span>: <span class="code-value">"https://&lt;OPNSENSE_IP&gt;/api/firewall/alias_util/add/&lt;ALIAS&gt;"</span>
       },
-      "id": "a2b3c4d5-3c4d-6e5f-0g7h-1i2j3k4l5m6n",
-      "name": "OPNsense API (Block IP)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        940,
-        200
-      ],
-      "credentials": {
-        "httpBasicAuth": {
-          "id": "YOUR_CREDENTIAL_ID_HERE",
-          "name": "OPNsense API"
-        }
-      }
+      <span class="code-key">"name"</span>: <span class="code-value">"OPNsense API (Block IP)"</span>,
+      <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.httpRequest"</span>
     },
     {
-      "parameters": {
-        "method": "POST",
-        "url": "<YOUR_DISCORD_WEBHOOK_URL>",
-        "sendBody": true,
-        "contentType": "json",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "embeds",
-              "value": "={{ [{\n  \"title\": \"🚨 Threat Blocked by OPNsense\",\n  \"description\": \"An active threat was detected by Wazuh and the IP has been added to the firewall blocklist.\",\n  \"color\": 15158332,\n  \"fields\": [\n    { \"name\": \"IP Address\", \"value\": $json.data.srcip, \"inline\": true },\n    { \"name\": \"Rule ID\", \"value\": $json.rule.id, \"inline\": true },\n    { \"name\": \"Severity\", \"value\": $json.rule.level, \"inline\": true },\n    { \"name\": \"Description\", \"value\": $json.rule.description, \"inline\": false },\n    { \"name\": \"Agent\", \"value\": $json.agent.name, \"inline\": false }\n  ],\n  \"footer\": { \"text\": \"Automated Response via n8n\" },\n  \"timestamp\": $now\n}] }}"
-            }
-          ]
-        },
-        "options": {}
+      <span class="code-key">"parameters"</span>: {
+        <span class="code-key">"url"</span>: <span class="code-value">"&lt;DISCORD_WEBHOOK&gt;"</span>
       },
-      "id": "b3c4d5e6-4d5e-7f6g-1h8i-2j3k4l5m6n7o",
-      "name": "Discord Alert",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        1160,
-        300
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "c4d5e6f7-5e6f-8g7h-2i9j-3k4l5m6n7o8p",
-      "name": "No Action (Internal IP)",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        940,
-        420
-      ]
+      <span class="code-key">"name"</span>: <span class="code-value">"Discord Alert"</span>,
+      <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.httpRequest"</span>
     }
   ],
-  "connections": {
-    "Wazuh Webhook": {
-      "main": [
-        [
-          {
-            "node": "Safety Filter (Allowlist)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Safety Filter (Allowlist)": {
-      "main": [
-        [
-          {
-            "node": "OPNsense API (Block IP)",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "No Action (Internal IP)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OPNsense API (Block IP)": {
-      "main": [
-        [
-          {
-            "node": "Discord Alert",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  }
-}</pre>
+  <span class="code-key">"connections"</span>: { <span class="code-comment">// ... Connection logic details encrypted ...</span> }
+<span class="code-key">}</span></pre>
                             </div>
                         </details>
                     </div>
@@ -735,7 +595,7 @@
     <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-main">
         <div class="mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Return to Bridge Control</button>
-            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">The Holocron Logs</h1>
+            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tighter text-main">The Holocron Logs</h1>
         </div>
 
         <div class="relative py-20 flex items-center justify-center min-h-[500px] overflow-visible">
@@ -757,10 +617,10 @@
                 <p class="text-sm opacity-70 mb-8 max-w-md mx-auto leading-relaxed uppercase tracking-widest font-bold">Technical mission reports under encryption lock.</p>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase">Status</span><span class="tech-data text-[10px] text-[--amber-alert] uppercase font-bold">Locked</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Level</span><span class="tech-data text-[10px] uppercase font-bold">5</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Signal</span><span class="tech-data text-[10px] animate-pulse text-[--saber-blue] uppercase font-bold">Active</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Log</span><span class="tech-data text-[10px] uppercase font-bold">Pending</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main uppercase font-bold"><span class="tech-data text-[8px] block opacity-40 uppercase">Status</span><span class="tech-data text-[10px] text-[--amber-alert]">Locked</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main uppercase font-bold"><span class="tech-data text-[8px] block opacity-40 tracking-widest">Level</span><span class="tech-data text-[10px]">5</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main uppercase font-bold"><span class="tech-data text-[8px] block opacity-40 tracking-widest">Signal</span><span class="tech-data text-[10px] animate-pulse text-[--saber-blue]">Active</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main uppercase font-bold"><span class="tech-data text-[8px] block opacity-40 tracking-widest">Log</span><span class="tech-data text-[10px]">Pending</span></div>
                 </div>
             </div>
             <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 locked-content mt-12 opacity-5"></div>
@@ -772,7 +632,7 @@
         <div class="mb-12"><button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Back to Bridge Control</button></div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2 space-y-12">
-                <div class="glass-panel p-5 md:p-10 border-accent">
+                <div class="glass-panel p-5 md:p-10 border-accent text-main font-semibold uppercase">
                     <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
                         <div class="tactical-avatar">
                             <div class="avatar-glow"></div>
@@ -781,11 +641,11 @@
                         <h1 class="text-2xl md:text-4xl font-bold tracking-tight uppercase">The Engineer Behind the Fleet</h1>
                     </div>
                     
-                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95 uppercase font-semibold">
+                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95">
                         <section>
                             <h3 class="tech-data text-[11px] text-[--saber-blue] mb-4 font-bold tracking-widest border-b border-white/10 pb-2 uppercase tracking-[0.2em]">Operational Philosophy</h3>
                             <p class="mb-6 tracking-tight leading-relaxed">I don't just build systems; I engineer resilience. My career is defined by transitioning static workloads into high-availability, automated environments where infrastructure is treated as code.</p>
-                            <p class="text-sm font-medium">With over seven years of senior-level experience managing complex IT environments for industry leaders, I have built a professional reputation on a Measure Twice, Cut Once philosophy. Today, I leverage that enterprise foundation to bridge the gap between traditional system administration and automated, software-defined infrastructure.</p>
+                            <p class="text-sm font-medium leading-relaxed">With over seven years of senior-level experience managing complex IT environments for industry leaders, I have built a professional reputation on a Measure Twice, Cut Once philosophy. Today, I leverage that enterprise foundation to bridge the gap between traditional system administration and automated, software-defined infrastructure.</p>
                         </section>
 
                         <section>
@@ -793,15 +653,15 @@
                             <div class="grid grid-cols-1 gap-6">
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Team Liquid // IT Systems Specialist // 2023 – Present</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Orchestrate technical support and system operations for competitive gaming environments. Administer user access and identity governance across Google Workspace for 200+ users.</p>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Orchestrate technical support and system operations for competitive gaming environments. Administer user access and identity governance across Google Workspace for 200+ users.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Stagwell // Sr. Infrastructure Engineer // 2021 – 2023</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Sustained a consistent 95% resolution across cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro and Intune.</p>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Sustained a consistent 95% resolution across cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro and Intune.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Creative Artists Agency (CAA) // 2019 – 2021</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Service Desk Lead. Primary escalation point for global asset lifecycle management and optimized Active Directory infrastructure.</p>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Service Desk Lead. Primary escalation point for global asset lifecycle management and optimized Active Directory infrastructure.</p>
                                 </div>
                             </div>
                         </section>
@@ -810,15 +670,15 @@
             </div>
             
             <div class="space-y-8">
-                <div class="glass-panel p-6 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)] text-main">
+                <div class="glass-panel p-6 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)] text-main font-bold uppercase">
                     <h3 class="tech-data text-[11px] mb-6 text-[--saber-blue] font-bold uppercase tracking-[0.2em]">Command Frequency</h3>
                     <div class="space-y-4">
-                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase">LinkedIn // Pilot ↗</a>
+                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase tracking-widest">LinkedIn // Pilot ↗</a>
                         <button onclick="copyEmail()" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold text-xs uppercase tracking-widest">Email // Admiral ↗</button>
                     </div>
                 </div>
                 
-                <div class="glass-panel p-6 md:p-8 text-main">
+                <div class="glass-panel p-6 md:p-8 text-main font-bold uppercase">
                     <h3 class="tech-data text-[11px] mb-6 text-[--saber-blue] font-bold uppercase tracking-[0.2em]">Active Stack</h3>
                     <ul class="text-xs space-y-4 opacity-80 font-bold uppercase tracking-wider">
                         <li>• Proxmox / ESXi</li>
