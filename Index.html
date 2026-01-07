@@ -164,6 +164,11 @@
             background: var(--amber-alert); color: #000; font-weight: bold;
         }
 
+        .category-tag {
+            font-size: 9px; padding: 2px 6px; border: 1px solid var(--saber-blue);
+            color: var(--saber-blue); font-family: 'Space Mono', monospace; border-radius: 4px;
+        }
+
         .border-accent { border-left: 4px solid var(--saber-blue); }
 
         .view-transition { transition: opacity 0.4s ease, transform 0.4s ease; }
@@ -300,7 +305,8 @@
             
             <div class="flex flex-wrap justify-center gap-2 md:space-x-1 tech-data text-[10px] md:text-xs items-center mt-4 md:mt-0">
                 <a href="javascript:void(0)" onclick="showView('home', 'alignment')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">Alignment</a>
-                <a href="javascript:void(0)" onclick="showView('deep-dive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase font-bold">The Fleet</a>
+                <!-- CORRECTED NAVIGATION FONT: Removed font-bold for uniformity -->
+                <a href="javascript:void(0)" onclick="showView('deep-dive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">The Fleet</a>
                 <a href="javascript:void(0)" onclick="showView('archive')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">Holocron Logs</a>
                 <a href="javascript:void(0)" onclick="showView('architect')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">About</a>
                 <a href="javascript:void(0)" onclick="showView('home', 'tour')" class="tactical-pop px-3 py-2 rounded-lg border border-transparent opacity-80 hover:opacity-100 uppercase">Briefing</a>
@@ -334,7 +340,7 @@
                         
                         <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 tracking-tight uppercase">Tima Nlemvo</h1>
                         <p class="tech-data text-[--saber-blue] text-base md:text-xl mb-8 uppercase">Systems Engineer | Infrastructure & Networking | Automation & Cloud Implementation</p>
-                        <div class="max-w-2xl border-accent pl-4 md:pl-6 mb-12 mx-auto md:mx-0">
+                        <div class="max-w-2xl border-accent pl-4 md:pl-6 mb-12 mx-auto md:mx-0 text-main">
                             <p class="text-base md:text-xl text-left leading-relaxed opacity-80 uppercase tracking-tight font-medium">
                                 I don't just build systems; I engineer resilience. With over 7 years of operational experience managing high-stakes infrastructure for industry leaders, I establish excellence through technical implementation.
                             </p>
@@ -368,16 +374,20 @@
 
                 <div id="matrixSlider" class="flex md:block overflow-x-auto snap-x snap-mandatory hide-scrollbar md:divide-y md:divide-white/10">
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 p-2 md:p-0">
-                        <div class="p-5 md:p-6 md:col-span-3"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Identity Management (IAM)</p></div>
+                        <div class="p-5 md:p-6 md:col-span-3 text-main"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Identity Management (IAM)</p></div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed">Active Directory, Google Workspace, User Access Governance.</p></div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0"><p class="font-semibold text-[--saber-blue] uppercase text-[11px] leading-relaxed tracking-tight">Authentik: Centralized OIDC/SAML, MFA Enforcement, and SSO bridging for all cluster services.</p></div>
                     </div>
                     <div class="min-w-[90%] md:min-w-0 snap-center grid grid-cols-1 md:grid-cols-12 border-r md:border-r-0 border-white/10 p-2 md:p-0">
-                        <div class="p-5 md:p-6 md:col-span-3"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Infrastructure Reliability</p></div>
+                        <div class="p-5 md:p-6 md:col-span-3 text-main"><p class="font-bold tech-data text-xs text-[--saber-blue] uppercase tracking-tighter">Infrastructure Reliability</p></div>
                         <div class="p-5 md:p-6 md:col-span-4 border-t md:border-t-0 md:border-x border-white/10 text-main"><p class="opacity-80 uppercase text-[11px] leading-relaxed">Backup solutions, Patching schedules, Enterprise Imaging.</p></div>
                         <div class="p-5 md:p-6 md:col-span-5 border-t md:border-t-0"><p class="font-semibold text-[--saber-blue] uppercase text-[11px] leading-relaxed tracking-tight">Proxmox VE & ZFS: Atomic snapshots, self-healing file systems, and real-time telemetry.</p></div>
                     </div>
                 </div>
+            </div>
+            <div id="matrixIndicators" class="flex md:hidden justify-center items-center gap-2 mt-6">
+                <div class="indicator-dash active" data-index="0"></div>
+                <div class="indicator-dash" data-index="1"></div>
             </div>
         </section>
 
@@ -438,7 +448,7 @@
                         <div class="inline-block mx-auto mb-10 text-center">
                             <div class="tech-data text-4xl md:text-6xl font-bold animate-pulse mb-1 uppercase tracking-tighter text-main whitespace-nowrap">Coming Soon</div>
                             <div class="h-[4px] w-full bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 30%"></div>
+                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 40%"></div>
                             </div>
                         </div>
 
@@ -449,15 +459,16 @@
             </div>
         </section>
 
-        <!-- Briefing Room (CORRECTED BUTTON LAYOUT) -->
+        <!-- Briefing Room -->
         <section id="tour" class="max-w-7xl mx-auto py-10 md:py-20 mb-20 md:mb-32">
-            <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden">
-                <div class="relative z-10 text-main font-semibold">
-                    <h2 class="tech-data text-lg md:text-xl mb-6 tracking-widest text-[--amber-alert] font-bold uppercase">Briefing Room // Tactical Tour</h2>
-                    <p class="text-base md:text-lg opacity-80 mb-12 leading-relaxed uppercase">
+            <div class="glass-panel p-6 md:p-12 border-2 border-[--amber-alert]/30 relative overflow-hidden text-main uppercase">
+                <div class="relative z-10 font-semibold">
+                    <h2 class="tech-data text-lg md:text-xl mb-6 tracking-widest text-[--amber-alert] font-bold">Briefing Room // Tactical Tour</h2>
+                    <p class="text-base md:text-lg opacity-80 mb-12 leading-relaxed">
                         Looking for an engineer who treats every project with the rigor of a production data center? <strong>I am happy to hop on a screen-share for a "Guided Tour" of the Alliance Fleet.</strong>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6">
+                        <!-- Standardized Button Style -->
                         <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-5 rounded-2xl flex-1 text-sm font-bold uppercase tracking-widest tactical-pop">
                             LinkedIn // Pilot ↗
                         </a>
@@ -489,9 +500,9 @@
             <section>
                 <div class="flex items-center gap-4 mb-10"><h2 class="tech-data text-xl text-[--saber-blue] font-bold uppercase tracking-widest">I. Physical Architecture</h2><span class="h-[1px] flex-grow bg-[--saber-blue]/20"></span></div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">Millennium Falcon (Node A)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 text-main font-semibold"><li>CPU: Intel Core Ultra 9</li><li>RAM: 64GB DDR5</li><li>GPU: RTX 4000 SFF ADA (20GB VRAM)</li><li>Workloads: Ollama, ComfyUI, n8n.</li></ul></div>
-                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">CR90 Corvette (Node B)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 text-main font-semibold"><li>CPU: AMD Ryzen 7 PRO (ECC)</li><li>RAM: 64GB DDR5 ECC</li><li>DISK: 4TB ZFS Mirror</li><li>Workloads: Wazuh SIEM, Vaultwarden.</li></ul></div>
-                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">Go-zanti (Node C)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 text-main font-semibold"><li>CPU: Intel Core i7-7700</li><li>MOD: Custom 2.5GbE NIC</li><li>NET: OPNsense Edge Gateway</li><li>Workloads: AdGuard, DNS filtering.</li></ul></div>
+                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">Millennium Falcon (Node A)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 font-semibold"><li>CPU: Intel Core Ultra 9</li><li>RAM: 64GB DDR5</li><li>GPU: RTX 4000 SFF ADA (20GB VRAM)</li><li>Workloads: Ollama, ComfyUI, n8n.</li></ul></div>
+                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">CR90 Corvette (Node B)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 font-semibold"><li>CPU: AMD Ryzen 7 PRO (ECC)</li><li>RAM: 64GB DDR5 ECC</li><li>DISK: 4TB ZFS Mirror</li><li>Workloads: Wazuh SIEM, Vaultwarden.</li></ul></div>
+                    <div class="glass-panel p-6 border border-white/5"><h3 class="tech-data text-sm font-bold mb-4 text-[--saber-blue] uppercase tracking-widest">Go-zanti (Node C)</h3><ul class="text-[11px] opacity-70 leading-relaxed uppercase space-y-2 font-semibold"><li>CPU: Intel Core i7-7700</li><li>MOD: Custom 2.5GbE NIC</li><li>NET: OPNsense Edge Gateway</li><li>Workloads: AdGuard, DNS filtering.</li></ul></div>
                 </div>
             </section>
 
@@ -504,8 +515,8 @@
                             <thead class="bg-white/5 uppercase tracking-widest"><tr><th class="p-4">Network</th><th class="p-4">VLAN</th><th class="p-4">IP Range</th><th class="p-4">Strategy</th></tr></thead>
                             <tbody class="divide-y divide-white/5 opacity-80 uppercase text-main font-semibold">
                                 <tr><td class="p-4 font-bold">LAN (Mgmt)</td><td class="p-4">Native</td><td class="p-4">192.168.10.0/24</td><td class="p-4">Hypervisors, switch, OPNsense UI.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--saber-blue]">SERVERS</td><td class="p-4">10</td><td class="p-4">192.168.1.0/24</td><td class="p-4 text-[--saber-blue]">AI Models, SIEM, Databases.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--amber-alert]">IOT</td><td class="p-4">20</td><td class="p-4">192.168.20.0/24</td><td class="p-4 text-[--amber-alert]">Isolated (No lateral access).</td></tr>
+                                <tr><td class="p-4 font-bold text-[--saber-blue]">SERVERS</td><td class="p-4 text-[--saber-blue]">10</td><td class="p-4 text-[--saber-blue]">192.168.1.0/24</td><td class="p-4 text-[--saber-blue]">AI Models, SIEM, Databases.</td></tr>
+                                <tr><td class="p-4 font-bold text-[--amber-alert]">IOT</td><td class="p-4 text-[--amber-alert]">20</td><td class="p-4 text-[--amber-alert]">192.168.20.0/24</td><td class="p-4 text-[--amber-alert]">Isolated (No lateral access).</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -521,10 +532,10 @@
                 </div>
             </section>
 
-            <!-- IV. AI Ops & Automation (RESTORED SECOND CARD) -->
+            <!-- IV. AI Ops & Automation -->
             <section class="pb-20">
                 <div class="flex items-center gap-4 mb-10"><h2 class="tech-data text-xl text-[--saber-blue] font-bold uppercase tracking-widest">IV. Automation & AI Ops</h2><span class="h-[1px] flex-grow bg-[--saber-blue]/20"></span></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-main">
                     <div class="glass-panel p-8">
                         <h3 class="tech-data text-sm font-bold text-[--saber-blue] mb-6 uppercase tracking-widest">The Tactical Droid (n8n)</h3>
                         <p class="text-[11px] opacity-70 leading-relaxed uppercase font-bold mb-6">API orchestrator for fleet maintenance and automated response logic.</p>
@@ -533,13 +544,13 @@
                                 <span>View Logic JSON</span>
                                 <span class="group-open:rotate-180 transition-transform">▼</span>
                             </summary>
-                            <div class="p-4 max-h-[300px] overflow-y-auto bg-slate-950">
-                                <pre class="tech-data text-[7px] leading-tight text-[--text-main]/70 whitespace-pre-wrap font-bold uppercase">{"workflow": "Wazuh to OPNsense Block & Discord Alert"}</pre>
+                            <div class="p-4 max-h-[300px] overflow-y-auto bg-slate-950 text-main">
+                                <pre class="tech-data text-[7px] leading-tight opacity-70 whitespace-pre-wrap font-bold uppercase">{"workflow": "Wazuh to OPNsense Block & Discord Alert"}</pre>
                             </div>
                         </details>
                     </div>
                     <div class="glass-panel p-8">
-                        <h3 class="tech-data text-sm font-bold text-[--saber-blue] mb-6 uppercase tracking-widest text-main">Private AI Stack</h3>
+                        <h3 class="tech-data text-sm font-bold text-[--saber-blue] mb-6 uppercase tracking-widest">Private AI Stack</h3>
                         <p class="text-[11px] opacity-70 leading-relaxed uppercase font-bold">A local LLM inference stack using Ollama and AnythingLLM running on the Node A GPU. This allows for private RAG (Retrieval-Augmented Generation) operations on sensitive documentation without data leaving the perimeter.</p>
                     </div>
                 </div>
@@ -548,10 +559,10 @@
     </div>
 
     <!-- HOLOCRON LOGS VIEW -->
-    <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20">
+    <div id="archive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-main">
         <div class="mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Return to Bridge Control</button>
-            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tighter text-main">The Holocron Logs</h1>
+            <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">The Holocron Logs</h1>
         </div>
 
         <div class="relative py-20 flex items-center justify-center min-h-[500px] overflow-visible">
@@ -570,13 +581,13 @@
                     </div>
                 </div>
                 
-                <p class="text-sm opacity-70 mb-8 max-w-md mx-auto leading-relaxed uppercase tracking-widest text-main font-bold">Technical mission reports under encryption lock.</p>
+                <p class="text-sm opacity-70 mb-8 max-w-md mx-auto leading-relaxed uppercase tracking-widest font-bold">Technical mission reports under encryption lock.</p>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5"><span class="tech-data text-[8px] block opacity-40 uppercase">Status</span><span class="tech-data text-[10px] text-[--amber-alert] uppercase font-bold">Locked</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Level</span><span class="tech-data text-[10px] uppercase font-bold">5</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Signal</span><span class="tech-data text-[10px] animate-pulse text-[--saber-blue] uppercase font-bold">Active</span></div>
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/5"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Log</span><span class="tech-data text-[10px] uppercase font-bold">Pending</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase">Status</span><span class="tech-data text-[10px] text-[--amber-alert] uppercase font-bold">Locked</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Level</span><span class="tech-data text-[10px] uppercase font-bold">5</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Signal</span><span class="tech-data text-[10px] animate-pulse text-[--saber-blue] uppercase font-bold">Active</span></div>
+                    <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-main"><span class="tech-data text-[8px] block opacity-40 uppercase tracking-widest">Log</span><span class="tech-data text-[10px] uppercase font-bold">Pending</span></div>
                 </div>
             </div>
             <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 locked-content mt-12 opacity-5"></div>
@@ -584,12 +595,12 @@
     </div>
 
     <!-- ABOUT VIEW -->
-    <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-slate-800">
+    <div id="architect-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-main">
         <div class="mb-12"><button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Back to Bridge Control</button></div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2 space-y-12">
                 <div class="glass-panel p-5 md:p-10 border-accent">
-                    <div class="flex flex-col md:flex-row items-center gap-8 mb-10 text-main">
+                    <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
                         <div class="tactical-avatar">
                             <div class="avatar-glow"></div>
                             <img src="NewMemoji.png" alt="Tima Nlemvo Avatar" onerror="this.src='https://raw.githubusercontent.com/timanlemvo/alliance-portfolio/54c37dce7e058291ac44ed0a6b602a9caa94bf56/NewMemoji.png'">
@@ -597,11 +608,11 @@
                         <h1 class="text-2xl md:text-4xl font-bold tracking-tight uppercase">The Engineer Behind the Fleet</h1>
                     </div>
                     
-                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95 text-main uppercase font-semibold">
+                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95 uppercase font-semibold">
                         <section>
                             <h3 class="tech-data text-[11px] text-[--saber-blue] mb-4 font-bold tracking-widest border-b border-white/10 pb-2 uppercase tracking-[0.2em]">Operational Philosophy</h3>
                             <p class="mb-6 tracking-tight leading-relaxed">I don't just build systems; I engineer resilience. My career is defined by transitioning static workloads into high-availability, automated environments where infrastructure is treated as code.</p>
-                            <p class="text-sm">With over seven years of senior-level experience managing complex IT environments for industry leaders, I have built a professional reputation on a Measure Twice, Cut Once philosophy.</p>
+                            <p class="text-sm font-medium">With over seven years of senior-level experience managing complex IT environments for industry leaders, I have built a professional reputation on a Measure Twice, Cut Once philosophy. Today, I leverage that enterprise foundation to bridge the gap between traditional system administration and automated, software-defined infrastructure.</p>
                         </section>
 
                         <section>
@@ -609,15 +620,15 @@
                             <div class="grid grid-cols-1 gap-6">
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Team Liquid // IT Systems Specialist // 2023 – Present</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed">Orchestrate technical support and system operations for competitive gaming environments. Administer user access and identity governance across Google Workspace for 200+ users.</p>
+                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Orchestrate technical support and system operations for competitive gaming environments. Administer user access and identity governance across Google Workspace for 200+ users.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Stagwell // Sr. Infrastructure Engineer // 2021 – 2023</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed">Sustained a consistent 95% resolution across cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro and Intune.</p>
+                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Sustained a consistent 95% resolution across cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro and Intune.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Creative Artists Agency (CAA) // 2019 – 2021</h4>
-                                    <p class="text-xs opacity-80 uppercase leading-relaxed">Service Desk Lead. Primary escalation point for global asset lifecycle management and optimized Active Directory infrastructure.</p>
+                                    <p class="text-xs opacity-80 uppercase leading-relaxed font-semibold">Service Desk Lead. Primary escalation point for global asset lifecycle management and optimized Active Directory infrastructure.</p>
                                 </div>
                             </div>
                         </section>
@@ -629,7 +640,7 @@
                 <div class="glass-panel p-6 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)] text-main">
                     <h3 class="tech-data text-[11px] mb-6 text-[--saber-blue] font-bold uppercase tracking-[0.2em]">Command Frequency</h3>
                     <div class="space-y-4">
-                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase tracking-widest">LinkedIn // Pilot ↗</a>
+                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase">LinkedIn // Pilot ↗</a>
                         <button onclick="copyEmail()" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold text-xs uppercase tracking-widest">Email // Admiral ↗</button>
                     </div>
                 </div>
