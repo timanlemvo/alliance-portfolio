@@ -154,6 +154,7 @@
             align-items: center; gap: 10px;
             font-family: 'Space Mono', monospace; font-size: 12px;
             text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);
+            width: max-content; max-width: 90vw;
         }
 
         .flash-active { top: 24px; }
@@ -188,6 +189,16 @@
             width: 160px; height: 160px; border: 1px solid var(--saber-blue);
             border-radius: 50%; opacity: 0.3; animation: pulse-avatar 4s infinite ease-in-out;
             box-shadow: inset 0 0 20px var(--saber-blue);
+        }
+
+        /* Slider Indicators */
+        .indicator-dash {
+            width: 12px; height: 3px; background: rgba(128, 128, 128, 0.2);
+            border-radius: 2px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .indicator-dash.active {
+            width: 28px; background: var(--saber-blue); box-shadow: 0 0 10px var(--saber-blue);
         }
 
         /* Ambient Halo Effect */
@@ -358,7 +369,7 @@
 
         <!-- 01. Professional Alignment Matrix -->
         <section id="alignment" class="max-w-7xl mx-auto py-10 md:py-20 text-main">
-            <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4 uppercase tracking-tighter"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
+            <h2 class="text-xl md:text-2xl font-bold mb-8 md:mb-12 flex items-center gap-4 uppercase tracking-tighter text-main"><span class="text-[--saber-blue]">01.</span> Professional Alignment Matrix</h2>
             <div class="glass-panel overflow-hidden text-sm">
                 <div class="hidden md:grid grid-cols-12 bg-white/5 tech-data text-xs uppercase font-bold border-b border-white/10">
                     <div class="col-span-3 p-6 border-r border-white/10">Category</div>
@@ -438,7 +449,7 @@
                         <div class="inline-block mx-auto mb-10 text-center">
                             <div class="tech-data text-4xl md:text-6xl font-bold animate-pulse mb-1 uppercase tracking-tighter text-main whitespace-nowrap">Coming Soon</div>
                             <div class="h-[4px] w-full bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 30%"></div>
+                                <div class="h-full bg-[--saber-blue] animate-[loading-bar_3s_infinite_linear]" style="width: 40%"></div>
                             </div>
                         </div>
 
@@ -470,17 +481,16 @@
         </section>
     </div>
 
-    <!-- FLEET DEEP-DIVE VIEW -->
+    <!-- FLEET DEEP-DIVE VIEW (NETWORK HIGHLIGHTS APPLIED) -->
     <div id="deep-dive-view" class="view-transition hidden-view max-w-7xl mx-auto px-4 py-10 md:py-20 text-main">
         <div class="mb-12">
             <button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Back to Bridge Control</button>
             <h1 class="text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">The Alliance Fleet: Deep-Dive</h1>
-            <p class="tech-data text-xs text-[--saber-blue] opacity-60 uppercase tracking-widest">Technical Specifications // Private Cloud Infrastructure v2.0</p>
+            <p class="tech-data text-xs text-[--saber-blue] opacity-60 uppercase tracking-widest font-bold">Technical Specifications // Private Cloud Infrastructure v2.0</p>
         </div>
 
         <div class="space-y-16">
-            <!-- Operational Philosophy -->
-            <div class="glass-panel p-8 md:p-12 border-accent relative overflow-hidden">
+            <div class="glass-panel p-8 md:p-12 border-accent">
                 <h2 class="tech-data text-xl mb-6 text-[--saber-blue] font-bold uppercase tracking-widest">Operational Philosophy</h2>
                 <p class="text-base md:text-lg leading-relaxed opacity-90 italic uppercase tracking-tight font-semibold">"This infrastructure is built on a Measure Twice, Cut Once philosophy. It is not merely a collection of servers; it is a production-grade simulation designed to bridge the gap between IT Operations and Systems Engineering."</p>
             </div>
@@ -495,18 +505,20 @@
                 </div>
             </section>
 
-            <!-- II. Network Segmentation -->
+            <!-- II. Network Segmentation (COLORED HIGHLIGHTS) -->
             <section>
                 <div class="flex items-center gap-4 mb-10"><h2 class="tech-data text-xl text-[--saber-blue] font-bold uppercase tracking-widest">II. Network Architecture</h2><span class="h-[1px] flex-grow bg-[--saber-blue]/20"></span></div>
                 <div class="glass-panel overflow-hidden mb-12">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left tech-data text-[10px]">
                             <thead class="bg-white/5 uppercase tracking-widest"><tr><th class="p-4">Network</th><th class="p-4">VLAN</th><th class="p-4">IP Range</th><th class="p-4">Strategy</th></tr></thead>
-                            <tbody class="divide-y divide-white/5 opacity-80 uppercase text-main font-semibold">
-                                <tr><td class="p-4 font-bold">LAN (Mgmt)</td><td class="p-4">Native</td><td class="p-4">192.168.10.0/24</td><td class="p-4 text-[--saber-blue]">Hypervisors, switch, OPNsense UI.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--saber-blue]">SERVERS</td><td class="p-4">10</td><td class="p-4">192.168.1.0/24</td><td class="p-4 text-[--saber-blue]">AI Models, SIEM, Databases.</td></tr>
-                                <tr><td class="p-4 font-bold text-[--amber-alert]">IOT</td><td class="p-4">20</td><td class="p-4">192.168.20.0/24</td><td class="p-4 text-[--amber-alert]">Isolated (No lateral access).</td></tr>
-                                <tr><td class="p-4 font-bold text-[--amber-alert]">GUEST</td><td class="p-4">30</td><td class="p-4">192.168.30.0/24</td><td class="p-4 text-[--amber-alert]">Isolated WiFi (No lateral access).</td></tr>
+                            <tbody class="divide-y divide-white/5 uppercase font-semibold">
+                                <!-- BLUE: LAN & SERVERS -->
+                                <tr class="text-[--saber-blue]"><td class="p-4 font-bold">LAN (Mgmt)</td><td class="p-4">Native</td><td class="p-4">192.168.10.0/24</td><td class="p-4">Hypervisors, switch, OPNsense UI.</td></tr>
+                                <tr class="text-[--saber-blue]"><td class="p-4 font-bold">SERVERS</td><td class="p-4">10</td><td class="p-4">192.168.1.0/24</td><td class="p-4">AI Models, SIEM, Databases.</td></tr>
+                                <!-- YELLOW: IOT & GUEST -->
+                                <tr class="text-[--amber-alert]"><td class="p-4 font-bold">IOT</td><td class="p-4">20</td><td class="p-4">192.168.20.0/24</td><td class="p-4">Isolated (No lateral access).</td></tr>
+                                <tr class="text-[--amber-alert]"><td class="p-4 font-bold">GUEST</td><td class="p-4">30</td><td class="p-4">192.168.30.0/24</td><td class="p-4">Isolated WiFi (No lateral access).</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -522,7 +534,7 @@
                 </div>
             </section>
 
-            <!-- IV. AI Ops & Automation (WITH FULL POPPING JSON) -->
+            <!-- IV. AI Ops & Automation -->
             <section class="pb-20">
                 <div class="flex items-center gap-4 mb-10"><h2 class="tech-data text-xl text-[--saber-blue] font-bold uppercase tracking-widest">IV. Automation & AI Ops</h2><span class="h-[1px] flex-grow bg-[--saber-blue]/20"></span></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-main">
@@ -532,11 +544,11 @@
                         
                         <details class="group border border-white/10 rounded-xl overflow-hidden bg-black/40">
                             <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-white/5 transition-colors list-none tech-data text-[9px] uppercase tracking-[0.3em] text-[--saber-blue] font-bold">
-                                <span>Open Code View: Workflow JSON</span>
+                                <span>View Logic JSON</span>
                                 <span class="group-open:rotate-180 transition-transform">▼</span>
                             </summary>
-                            <div class="p-6 max-h-[500px] overflow-y-auto bg-slate-950/80 code-pop border-t border-white/5">
-                                <pre class="text-[10px] leading-relaxed whitespace-pre-wrap"><span class="code-key">{</span>
+                            <div class="p-4 max-h-[500px] overflow-y-auto bg-slate-950/80 code-pop border-t border-white/5">
+                                <pre class="text-[10px] leading-relaxed whitespace-pre-wrap font-bold uppercase"><span class="code-key">{</span>
   <span class="code-key">"name"</span>: <span class="code-value">"Wazuh to OPNsense Block & Discord Alert"</span>,
   <span class="code-key">"nodes"</span>: [
     {
@@ -565,20 +577,22 @@
     {
       <span class="code-key">"parameters"</span>: {
         <span class="code-key">"method"</span>: <span class="code-value">"POST"</span>,
-        <span class="code-key">"url"</span>: <span class="code-value">"https://&lt;OPNSENSE_IP&gt;/api/firewall/alias_util/add/&lt;ALIAS&gt;"</span>
+        <span class="code-key">"url"</span>: <span class="code-value">"https://&lt;OPNSENSE_IP&gt;/api/firewall/alias_util/add/&lt;ALIAS&gt;"</span>,
+        <span class="code-key">"bodyParameters"</span>: {
+          <span class="code-key">"address"</span>: <span class="code-value">"={{ $json.data.srcip }}"</span>
+        }
       },
       <span class="code-key">"name"</span>: <span class="code-value">"OPNsense API (Block IP)"</span>,
       <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.httpRequest"</span>
     },
     {
       <span class="code-key">"parameters"</span>: {
-        <span class="code-key">"url"</span>: <span class="code-value">"&lt;DISCORD_WEBHOOK&gt;"</span>
+        <span class="code-key">"url"</span>: <span class="code-value">"&lt;DISCORD_WEBHOOK_URL&gt;"</span>
       },
       <span class="code-key">"name"</span>: <span class="code-value">"Discord Alert"</span>,
       <span class="code-key">"type"</span>: <span class="code-value">"n8n-nodes-base.httpRequest"</span>
     }
-  ],
-  <span class="code-key">"connections"</span>: { <span class="code-comment">// ... Connection logic details encrypted ...</span> }
+  ]
 <span class="code-key">}</span></pre>
                             </div>
                         </details>
@@ -633,7 +647,7 @@
         <div class="mb-12"><button onclick="showView('home')" class="tech-data text-[10px] md:text-xs text-[--saber-blue] mb-4 hover:underline uppercase font-bold tracking-widest">← Back to Bridge Control</button></div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2 space-y-12">
-                <div class="glass-panel p-5 md:p-10 border-accent text-main font-semibold uppercase">
+                <div class="glass-panel p-5 md:p-10 border-accent">
                     <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
                         <div class="tactical-avatar">
                             <div class="avatar-glow"></div>
@@ -642,11 +656,24 @@
                         <h1 class="text-2xl md:text-4xl font-bold tracking-tight uppercase">The Engineer Behind the Fleet</h1>
                     </div>
                     
-                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95">
+                    <div class="space-y-10 text-base md:text-lg leading-relaxed opacity-95 uppercase font-semibold">
                         <section>
-                            <h3 class="tech-data text-[11px] text-[--saber-blue] mb-4 font-bold tracking-widest border-b border-white/10 pb-2 uppercase tracking-[0.2em]">Operational Philosophy</h3>
-                            <p class="mb-6 tracking-tight leading-relaxed">I don't just build systems; I engineer resilience. My career is defined by transitioning static workloads into high-availability, automated environments where infrastructure is treated as code.</p>
-                            <p class="text-sm font-medium leading-relaxed">With over seven years of senior-level experience managing complex IT environments for industry leaders, I have built a professional reputation on a Measure Twice, Cut Once philosophy. Today, I leverage that enterprise foundation to bridge the gap between traditional system administration and automated, software-defined infrastructure.</p>
+                            <p class="mb-8 tracking-tight leading-relaxed text-xl">I design infrastructure for how it behaves in reality — under load, under failure, and under operational constraints.</p>
+                            <p class="text-sm font-medium leading-relaxed mb-6">My career spans over seven years operating and stabilizing complex enterprise environments across media, technology, and high-pressure production teams. In roles at Team Liquid, Stagwell, and Creative Artists Agency, I served as a senior escalation point responsible for keeping systems reliable, secure, and predictable while supporting executive users and globally distributed teams.</p>
+                            <p class="text-sm font-bold text-[--saber-blue]">That experience shaped my core belief: resilience is engineered, not improvised.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="tech-data text-[11px] text-[--saber-blue] mb-6 font-bold tracking-widest border-b border-white/10 pb-2 uppercase tracking-[0.2em]">Operational Philosophy</h3>
+                            <p class="mb-6 tracking-tight leading-relaxed">I don’t just build systems — I design for longevity, clarity, and failure tolerance.</p>
+                            <ul class="text-xs space-y-3 opacity-80 mb-8 list-none">
+                                <li>• Designing fault domains before deploying workloads</li>
+                                <li>• Treating identity and network boundaries as foundational controls</li>
+                                <li>• Favoring explicit trust and default-deny over convenience</li>
+                                <li>• Making observability and documentation first-class components</li>
+                                <li>• Automating to reduce cognitive load, not just manual effort</li>
+                            </ul>
+                            <p class="text-[10px] opacity-60">These principles were forged in enterprise environments where outages or ambiguity had immediate consequences.</p>
                         </section>
 
                         <section>
@@ -654,17 +681,23 @@
                             <div class="grid grid-cols-1 gap-6">
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
                                     <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Team Liquid // IT Systems Specialist // 2023 – Present</h4>
-                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Orchestrate technical support and system operations for competitive gaming environments. Administer user access and identity governance across Google Workspace for 200+ users.</p>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Operate and support production systems for competitive gaming and corporate environments, serving as a Tier III escalation point across identity, endpoints, and core infrastructure. Administer access governance for 200+ users.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
-                                    <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Stagwell // Sr. Infrastructure Engineer // 2021 – 2023</h4>
-                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Sustained a consistent 95% resolution across cloud applications and IT systems. Securely administered Apple device fleets via JAMF Pro and Intune.</p>
+                                    <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Stagwell // Senior Infrastructure Engineer // 2021 – 2023</h4>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Sustained high reliability across enterprise IT systems and cloud applications while managing macOS and Windows fleets using JAMF Pro and Intune. worked closely with security teams to enforce policy.</p>
                                 </div>
                                 <div class="p-6 rounded-2xl bg-white/5 border border-white/10 tactical-pop">
-                                    <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Creative Artists Agency (CAA) // 2019 – 2021</h4>
-                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Service Desk Lead. Primary escalation point for global asset lifecycle management and optimized Active Directory infrastructure.</p>
+                                    <h4 class="tech-data text-[11px] text-[--saber-blue] mb-1 font-bold uppercase">Creative Artists Agency (CAA) // Service Desk Lead // 2019 – 2021</h4>
+                                    <p class="text-xs opacity-80 leading-relaxed font-semibold uppercase">Primary escalation owner for global asset lifecycle management and Active Directory infrastructure. Led service operations while optimizing identity workflows and escalation paths.</p>
                                 </div>
                             </div>
+                        </section>
+
+                        <section>
+                            <h3 class="tech-data text-[11px] text-[--saber-blue] mb-6 font-bold tracking-widest border-b border-white/10 pb-2 uppercase tracking-[0.2em]">The Alliance Holocron</h3>
+                            <p class="text-sm font-medium leading-relaxed">The Alliance Holocron is a continuation of how I’ve always approached systems — not a hobby lab, but a documented, production-style environment.</p>
+                            <p class="text-sm opacity-80 mt-4 leading-relaxed">Within it, I design and operate a multi-node, high-availability infrastructure where I validate architectural decisions around fault isolation, network segmentation, identity control, and telemetry. Every component is documented with intent, mirroring the standards I followed in enterprise roles.</p>
                         </section>
                     </div>
                 </div>
@@ -674,7 +707,7 @@
                 <div class="glass-panel p-6 md:p-8 border-2 border-[--saber-blue]/50 shadow-[0_0_20px_rgba(0,163,255,0.2)] text-main font-bold uppercase">
                     <h3 class="tech-data text-[11px] mb-6 text-[--saber-blue] font-bold uppercase tracking-[0.2em]">Command Frequency</h3>
                     <div class="space-y-4">
-                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase tracking-widest">LinkedIn // Pilot ↗</a>
+                        <a href="https://www.linkedin.com/in/timanlemvo/" target="_blank" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center font-bold uppercase">LinkedIn // Pilot ↗</a>
                         <button onclick="copyEmail()" class="frequency-link p-4 rounded-xl tech-data text-[10px] text-center w-full font-bold text-xs uppercase tracking-widest">Email // Admiral ↗</button>
                     </div>
                 </div>
