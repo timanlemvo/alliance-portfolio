@@ -65,7 +65,7 @@
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; overflow-x: hidden; }
 
         body {
             font-family: var(--font-body);
@@ -92,7 +92,7 @@
         button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
         ul { list-style: none; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); overflow-x: hidden; }
 
         .label {
             font-family: var(--font-mono); font-size: 10px; font-weight: 500;
@@ -147,7 +147,7 @@
 
         /* NAV */
         .nav-wrap {
-            position: sticky; top: 0; z-index: 100; padding: 12px 16px;
+            position: sticky; top: 0; z-index: 100; padding: 12px clamp(12px, 3vw, 16px);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-wrap.hidden-nav { transform: translateY(-110%); }
@@ -445,7 +445,7 @@
             <section class="section container reveal">
                 <div class="section__header">
                     <span class="section-num">03</span>
-                    <h2 class="section__title">The Work: Three Ways to Go Deeper</h2>
+                    <h2 class="section__title">The Work — Three Ways to Go Deeper</h2>
                     <div class="section__line"></div>
                 </div>
                 <p style="font-size: 14px; color: var(--text-2); margin-bottom: 32px; max-width: 600px; line-height: 1.7;">Each content type has a different purpose and voice. Projects show what I built. Writeups show how I think under pressure. The blog shows where I'm headed.</p>
@@ -465,7 +465,7 @@
                     </a>
                 </div>
 
-                <p id="projects-anchor" class="label--dim label" style="margin-bottom: 16px;">Projects</p>
+                <p id="projects-anchor" class="label--dim label" style="margin-bottom: 16px;">Projects — Interview-Ready</p>
                 <div class="project-grid">
                     <div class="card project-card">
                         <p class="label label--amber" style="margin-bottom: 8px;">Security</p>
@@ -891,7 +891,8 @@
         const THEMES = ['dark', 'light'];
         let themeIdx = 0;
         let ghostLoaded = false;
-        const GHOST_URL = 'https://holocron-labs.ghost.io';
+        const GHOST_API_URL = 'https://holocron-labs.ghost.io';   // API calls go here
+        const GHOST_URL = 'https://holocron-labs.tima.dev';       // Public links go here
         const GHOST_KEY = 'fff7faaba7a33c78be80afc5d3';
         const themeIcons = {
             dark: '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>',
@@ -959,7 +960,7 @@
             const container = document.getElementById('ghost-posts');
             const loading = document.getElementById('ghost-loading');
             try {
-                const res = await fetch(`${GHOST_URL}/ghost/api/content/posts/?key=${GHOST_KEY}&limit=3&fields=title,slug,excerpt,published_at,feature_image&include=tags`);
+                const res = await fetch(`${GHOST_API_URL}/ghost/api/content/posts/?key=${GHOST_KEY}&limit=3&fields=title,slug,excerpt,published_at,feature_image&include=tags`);
                 if (!res.ok) throw new Error(`Ghost API ${res.status}`);
                 const data = await res.json();
                 const posts = data.posts || [];
