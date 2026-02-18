@@ -1,6 +1,6 @@
 # alliance-portfolio
 
-Source for [tima.dev](https://tima.dev) — a single-file portfolio site for Tima Nlemvo, Senior IT Engineer.
+Source for [tima.dev](https://tima.dev). Single-file portfolio site for Tima Nlemvo, Senior IT Engineer.
 
 ---
 
@@ -53,19 +53,18 @@ const GHOST_API_URL = 'https://holocron-labs.ghost.io';
 const GHOST_URL    = 'https://holocron-labs.tima.dev';
 ```
 
-The fetch pulls `title`, `slug`, `custom_excerpt`, `published_at`, `feature_image`, and `tags` for the 6 most recent posts. Cards display the `custom_excerpt` (manually set in Ghost admin) as the subtitle — set this field on each post for clean card copy.
+Pulls `title`, `slug`, `custom_excerpt`, `published_at`, `feature_image`, and `tags` for the 6 most recent posts. Cards display `custom_excerpt` as the subtitle. Set this field in Ghost admin on each post for clean card copy.
 
 ---
 
 ## Deployment
 
-The site is a static file — deploy anywhere that serves HTML.
+Static file. Deploy anywhere that serves HTML.
 
-**Current setup:** Hosted via [tima.dev](https://tima.dev)
+**Current setup:** [tima.dev](https://tima.dev)
 
 To run locally:
 ```bash
-# Any static file server works
 npx serve .
 # or
 python3 -m http.server 8080
